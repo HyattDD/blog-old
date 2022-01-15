@@ -16,21 +16,24 @@
   <meta name="author" content="Dcode">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.安装必备资源  1.1先安装nvm 安装nvm而不是用brew install node的原因是因为nvm是node version manager,便于后续的版本控制 步骤如下：   首先进入home目录：cd ~   使用以下指令安装nvm：curl -o- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;nvm-sh&#x2F;nvm&#x2F;v0.37.2&#x2F;install.sh |">
+    <meta name="description" content="1.下载Ubuntu镜像文件与VMware 本次安装是使用Linux的常用发行版本Ubuntu，并且使用VMware15Pro建立虚拟机进行安装  Linux版本：ubuntu-20.04.2.0-desktop-amd64.iso 下载地址：http:&#x2F;&#x2F;www.ubuntu.com   VM版本：VMware Workstation 15 Pro 下载地址:  baidupan   2.使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac使用Hexo搭建个人博客">
-<meta property="og:url" content="http://example.com/2022/01/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BAhexo/index.html">
+<meta property="og:title" content="在Windows环境下安装Linux虚拟机">
+<meta property="og:url" content="http://example.com/2021/01/10/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85Linux/index.html">
 <meta property="og:site_name" content="Dcode的技术博客">
-<meta property="og:description" content="1.安装必备资源  1.1先安装nvm 安装nvm而不是用brew install node的原因是因为nvm是node version manager,便于后续的版本控制 步骤如下：   首先进入home目录：cd ~   使用以下指令安装nvm：curl -o- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;nvm-sh&#x2F;nvm&#x2F;v0.37.2&#x2F;install.sh |">
+<meta property="og:description" content="1.下载Ubuntu镜像文件与VMware 本次安装是使用Linux的常用发行版本Ubuntu，并且使用VMware15Pro建立虚拟机进行安装  Linux版本：ubuntu-20.04.2.0-desktop-amd64.iso 下载地址：http:&#x2F;&#x2F;www.ubuntu.com   VM版本：VMware Workstation 15 Pro 下载地址:  baidupan   2.使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-14T14:18:10.000Z">
-<meta property="article:modified_time" content="2022-01-14T14:23:50.774Z">
+<meta property="og:image" content="https://i.loli.net/2021/03/21/pogDAw7GRrv1XKU.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/21/JlA4KhDidPwf3zv.png">
+<meta property="article:published_time" content="2021-01-10T04:18:10.000Z">
+<meta property="article:modified_time" content="2022-01-15T03:13:37.709Z">
 <meta property="article:author" content="Dcode">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="虚拟机">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/21/pogDAw7GRrv1XKU.png">
   
   
-  <title>Mac使用Hexo搭建个人博客 - Dcode的技术博客</title>
+  <title>在Windows环境下安装Linux虚拟机 - Dcode的技术博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Mac使用Hexo搭建个人博客">
+            <span class="h2" id="subtitle" title="在Windows环境下安装Linux虚拟机">
               
             </span>
 
@@ -186,8 +189,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-14 22:18" pubdate>
-        2022年1月14日 晚上
+      <time datetime="2021-01-10 12:18" pubdate>
+        2021年1月10日 中午
       </time>
     </span>
   
@@ -197,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      1.7k 字
     </span>
   
 
@@ -206,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18 分钟
+      15 分钟
     </span>
   
 
@@ -235,150 +238,74 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Mac使用Hexo搭建个人博客</h1>
+            <h1 style="display: none">在Windows环境下安装Linux虚拟机</h1>
             
             <div class="markdown-body">
-              <h3 id="1安装必备资源"><a class="markdownIt-Anchor" href="#1安装必备资源"></a> 1.安装必备资源</h3>
-<h4 id="11先安装nvm"><a class="markdownIt-Anchor" href="#11先安装nvm"></a> 1.1先安装nvm</h4>
-<p>安装nvm而不是用<code>brew install node</code>的原因是因为nvm是<code>node version manager</code>,便于后续的版本控制</p>
-<p>步骤如下：</p>
-<ul>
-<li>
-<p>首先进入home目录：<code>cd ~</code></p>
-</li>
-<li>
-<p>使用以下指令安装nvm：<code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash</code></p>
-</li>
-</ul>
-<p>但是这里下载会出错，我先埋一个坑回头再解决</p>
-<h4 id="12安装nodejs"><a class="markdownIt-Anchor" href="#12安装nodejs"></a> 1.2安装nodejs</h4>
-<ul>
-<li>访问网址:<a href="nodejs.org">nodejs</a></li>
-<li>下载长期支持版LTS版本的nodejs，下载完成后不断同意，安装完后会发现npm这个包管理器也被装进去了</li>
-</ul>
+              <h2 id="1下载ubuntu镜像文件与vmware"><a class="markdownIt-Anchor" href="#1下载ubuntu镜像文件与vmware"></a> 1.下载Ubuntu镜像文件与VMware</h2>
+<p>本次安装是使用Linux的常用发行版本Ubuntu，并且使用VMware15Pro建立虚拟机进行安装</p>
 <blockquote>
-<p>nvm控制nodejs的版本管理，nodejs内部有不同的插件与包，用npm管理</p>
+<p>Linux版本：ubuntu-20.04.2.0-desktop-amd64.iso</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://www.ubuntu.com">http://www.ubuntu.com</a></p>
+</blockquote>
+<blockquote>
+<p>VM版本：VMware Workstation 15 Pro</p>
+<p>下载地址:  baidupan</p>
+</blockquote>
+<h2 id="2使用虚拟机安装ubuntu"><a class="markdownIt-Anchor" href="#2使用虚拟机安装ubuntu"></a> 2.使用虚拟机安装Ubuntu</h2>
+<p><code>新建虚拟机</code>–&gt;<code>自定义</code>–&gt;<code>下一步</code>–&gt;<code>稍后安装操作系统</code>–&gt;<code>选择linux-以及Ubuntu64位</code>–&gt;<code>选择提前建好的文件夹作</code></p>
+<p><code>为安装位置</code>–&gt;<code>设置参数按需求设置</code>–&gt;<code>将虚拟磁盘存储为单个文件</code>–&gt;<code>自定义硬件</code>–&gt;</p>
+<p><code>点击“新CD···”选择我们之前下载的Ubuntu镜像</code>–&gt;<code>完成</code>–&gt;<code>开启虚拟机</code>–&gt;<code>左侧选择语言简体中文</code>–&gt;</p>
+<p><code>右侧选择安装</code>–&gt;<code>提示清除磁盘仍选现在安装</code>–&gt;<code>继续</code>–&gt;<code>位置设置上海</code>–&gt;<code>设置用户名密码</code>–&gt;<code>安装后重启</code></p>
+<h2 id="3重启电脑后打开虚拟机直接蓝屏"><a class="markdownIt-Anchor" href="#3重启电脑后打开虚拟机直接蓝屏"></a> 3.重启电脑后，打开虚拟机，直接蓝屏</h2>
+<ul>
+<li>解决方案1：
+<ul>
+<li>windows搜索：<code>启用或关闭windows功能</code></li>
+<li>将<code>windows虚拟机监控平台</code>前面打勾</li>
+<li>将<code>虚拟机平台</code>前面打勾</li>
+<li>重启计算机即可</li>
+</ul>
+</li>
+<li>解决方案2：
+<ul>
+<li>在虚拟机设置里，把声卡、USB、打印机移除掉</li>
+</ul>
+</li>
+</ul>
+<h2 id="4启动虚拟机报错"><a class="markdownIt-Anchor" href="#4启动虚拟机报错"></a> 4.启动虚拟机报错</h2>
+<blockquote>
+<p>VMware WorkStation 与 Device/Credential Guard不兼容，在禁用Device/Credential Guard后，可以运行···</p>
 </blockquote>
 <ul>
-<li>在终端检查：<code>node -v</code>、<code>nom-v</code>可以用来检查是否安装成功（后续检查版本指令类似）</li>
-<li>打开mac终端进入到root用户：<code>suso su</code>后输入密码</li>
-</ul>
-<h4 id="13安装hexo框架"><a class="markdownIt-Anchor" href="#13安装hexo框架"></a> 1.3安装hexo框架</h4>
+<li>解决方案：
 <ul>
-<li>
-<p>借助npm安装hexo，但是由于墙，用淘宝的镜像更快，所以先装cnpm</p>
+<li>禁用Hyper-V服务<code>Win+R</code>–&gt;<code>services.msc</code>，找到Hyper-V服务并禁用</li>
+<li>管理员身份运行powershell，<code>Win+R</code>–&gt;<code>powershell</code>–&gt;<code>Start-process powershell -Verb runAs</code></li>
+<li>输入<code>bcdedit /set hypervisorlaunchtype off</code>–&gt;<code>是</code></li>
+<li>重启计算机，运行虚拟机</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/21/pogDAw7GRrv1XKU.png" srcset="/img/loading.gif" lazyload alt="image-20210321164704431" /></p>
+<p><img src="https://i.loli.net/2021/03/21/JlA4KhDidPwf3zv.png" srcset="/img/loading.gif" lazyload alt="image-20210321164911649" /></p>
+<h2 id="5linux换源"><a class="markdownIt-Anchor" href="#5linux换源"></a> 5.Linux换源</h2>
 <ul>
-<li>输入<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></li>
-<li>其中<code>-g</code>表示全局安装，后面–registry代表镜像源</li>
+<li>备份初始源，以防丢失</li>
 </ul>
-</li>
-<li>
-<p>检验cnpm版本确认安装成功后，用cnpm安装hexo，命令为<code>cnpm install -g hexo-cli</code></p>
-</li>
-<li>
-<p>检验hexo版本确认安装完成</p>
-</li>
-</ul>
-<h3 id="2开始搭建博客"><a class="markdownIt-Anchor" href="#2开始搭建博客"></a> 2.开始搭建博客</h3>
+<p><code>sudo cp /etc/apt/sources.list /etc/apt/sources_init.list</code></p>
 <ul>
-<li>首先pwd一下，确认位置，新建一个博客文件夹<code>mkdir dcode_blog</code></li>
-<li>这时候在finder的dcode目录下就会发现有dcode_blog这个文件夹，cd进去</li>
-<li>初始化一个博客<code>sudo hexo init</code>，等待一段时间后安装完成，可以发现在dcode_blog 的文件夹下多了一些文件，后续做博客基于这些文件</li>
-<li>启动博客命令：<code>hexo s</code></li>
-<li>访问localhost：4000端口，就可以看到本地的hexo网页了</li>
-<li>hexo使用：
+<li>打开源列表</li>
+</ul>
+<p><code>sudo gedit /etc/apt/sources.list</code></p>
 <ul>
-<li><strong>发布文章</strong>命令：<code>hexo n</code>+“标题名”，发布后文件保存在source/_posts/路径下，cd进去后ls即可发现</li>
-<li>用vim之类改完文章后清理一下数据缓存：<code>hexo clean</code>；再生成一下：<code>hexo g</code></li>
-<li>终止hexo的快捷键是Ctrl+C</li>
+<li>将源列表内容换成清华源</li>
 </ul>
-</li>
-</ul>
-<h3 id="3把博客项目部署到github上"><a class="markdownIt-Anchor" href="#3把博客项目部署到github上"></a> 3.把博客项目部署到github上</h3>
+<figure class="highlight html"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs html">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse <br># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse <br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse <br># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse <br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse <br># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse <br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse <br># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse<br></code></pre></td></tr></table></figure>
 <ul>
-<li>
-<p>首先新建仓库，命名必须是github名字+ <code>.github.io</code>,description随便写，我的是<em><a target="_blank" rel="noopener" href="http://DongHaotian100.github.io">DongHaotian100.github.io</a></em></p>
-</li>
-<li>
-<p>creat完成后，目前是空仓库，回到终端继续操作</p>
-</li>
-<li>
-<p>要在dcode_blog文件下安装一个git部署的插件：<code>cnpm install --save hexo-deployer-git</code></p>
-</li>
-<li>
-<p>对插件进行设置：</p>
-<ul>
-<li>
-<p>用vim打开_config.yml文件进行修改，文件最下端找到Deployment进行配置</p>
-</li>
-<li>
-<blockquote>
-<p>type: git</p>
-<p>repo:<a target="_blank" rel="noopener" href="https://github.com/DongHaotian100/DongHaotian100.github.io.git">https://github.com/DongHaotian100/DongHaotian100.github.io.git</a></p>
-<p>branch:master</p>
-</blockquote>
-</li>
-<li>
-<p>修改完上面的操作后先esc退出编辑模式，再输冒号：，再输入wq退出</p>
-</li>
+<li>更新源</li>
 </ul>
-</li>
-<li>
-<p>部署到远端<code>hexo d</code>,如果提示说不知我是谁，则配置git中的name与mail</p>
-<ul>
-<li><code>git config --global user.email</code></li>
-<li><code>git config --global user.email</code></li>
-</ul>
-</li>
-<li>
-<p>但是事实上目前这种用账号密码确认的方式已经被git在2021年8月舍弃了，故应该使用令牌token代替密码</p>
-<ul>
-<li>
-<p>设置勾选所有带repo的选项</p>
-</li>
-<li>
-<blockquote>
-<p>参考文档https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>
-<p>目前token：ghp_GNW3Jqn1lBsy7hOIz5Fh****具体查看私人笔记</p>
-</li>
-</ul>
-<h3 id="4更换hexo主题"><a class="markdownIt-Anchor" href="#4更换hexo主题"></a> 4.更换hexo主题</h3>
-<h4 id="41下载主题"><a class="markdownIt-Anchor" href="#41下载主题"></a> 4.1下载主题</h4>
-<p><code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></p>
-<h4 id="42修改配置文件"><a class="markdownIt-Anchor" href="#42修改配置文件"></a> 4.2修改配置文件</h4>
-<ul>
-<li>修改_config.yml，用vim打开</li>
-<li>找到theme，更改主题名字为新主题名字</li>
-</ul>
-<h4 id="43fluid主题文档"><a class="markdownIt-Anchor" href="#43fluid主题文档"></a> 4.3Fluid主题文档</h4>
-<p>官方链接：<code>https://hexo.fluid-dev.com/docs/guide/</code></p>
-<p>注意几个更新点：</p>
-<ul>
-<li>主题配置：dcode_blog/source/_data中的yml文件</li>
-<li>博客配置：dcode_blog/_config.fluid.yml文件</li>
-<li>相比原生修改点：
-<ul>
-<li>更换编辑器，以解析数学公式</li>
-<li>首页的一些样式</li>
-<li>about页面</li>
-</ul>
-</li>
-</ul>
-<h3 id="5配置域名"><a class="markdownIt-Anchor" href="#5配置域名"></a> 5.配置域名</h3>
-<ul>
-<li>首先购买域名，然后解析域名，进行配置</li>
-<li>配置GitHub上的博客所在repository的setting里的pages</li>
-</ul>
-<blockquote>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://budongshu.cn/2020/12/03/hexo">https://budongshu.cn/2020/12/03/hexo</a></p>
-<p>参考文档：阿里云域名解析文档</p>
-<p>参考视频：CodeSheep：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?share_source=copy_web">https://www.bilibili.com/video/BV1Yb411a7ty?share_source=copy_web</a></p>
-</blockquote>
+<p><code>sudo apt-get update</code></p>
+<p><code>sudo apt-get upgrade</code></p>
 
             </div>
             <hr>
@@ -388,7 +315,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
+                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
                     
                   </div>
                 
@@ -396,7 +323,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                      <a class="hover-with-bg" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
                     
                   </div>
                 
@@ -413,15 +340,15 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/01/11/%E7%BB%AA%E8%AE%BA/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第一章 绪论</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2022/01/11/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
-                        <span class="hidden-mobile">第二章 模型评估与选择</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
