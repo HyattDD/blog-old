@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dcode">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Basic_Python(1)  0.Pycharm 使用细节  0.1 File - Editor - File and Code Templates 用于调编程模板,模板示例如下，每次打开新的python文件时都会自动生成 12345#-*- coding &#x3D; utf-8 -*-#@Time : $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125;     %自动获取新建文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础手册（1）">
+<meta property="og:url" content="http://example.com/2021/02/11/Basic_python(1)/index.html">
+<meta property="og:site_name" content="Dcode的技术博客">
+<meta property="og:description" content="Basic_Python(1)  0.Pycharm 使用细节  0.1 File - Editor - File and Code Templates 用于调编程模板,模板示例如下，每次打开新的python文件时都会自动生成 12345#-*- coding &#x3D; utf-8 -*-#@Time : $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125;     %自动获取新建文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/01/09/xlJ6avE3M57mSOe.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/10/s9SQGhvMPTNVqHw.png">
+<meta property="article:published_time" content="2021-02-11T15:21:16.000Z">
+<meta property="article:modified_time" content="2022-01-15T06:12:05.020Z">
+<meta property="article:author" content="Dcode">
+<meta property="article:tag" content="python基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/09/xlJ6avE3M57mSOe.png">
+  
+  
+  <title>Python基础手册（1） - Dcode的技术博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dcode的技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Python基础手册（1）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-11 23:21" pubdate>
+        2021年2月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      71 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python基础手册（1）</h1>
+            
+            <div class="markdown-body">
+              <h1 id="basic_python1"><a class="markdownIt-Anchor" href="#basic_python1"></a> Basic_Python(1)</h1>
+<h2 id="0pycharm-使用细节"><a class="markdownIt-Anchor" href="#0pycharm-使用细节"></a> 0.Pycharm 使用细节</h2>
+<h3 id="01"><a class="markdownIt-Anchor" href="#01"></a> 0.1</h3>
+<p>File - Editor - File and Code Templates 用于调编程模板,模板示例如下，每次打开新的python文件时都会自动生成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#-*- coding = utf-8 -*-</span><br><span class="hljs-comment">#@Time : $&#123;DATE&#125; $&#123;TIME&#125;     %自动获取新建文件时的时间，$的作用</span><br><span class="hljs-comment">#@Author : D-code            %写死作者名</span><br><span class="hljs-comment">#@File : $&#123;NAME&#125;.py          %自动获取当前的文件名</span><br><span class="hljs-comment">#@Software : $&#123;PRODUCT_NAME&#125; %自动获取写代码的软件名称</span><br></code></pre></td></tr></table></figure>
+<h3 id="02"><a class="markdownIt-Anchor" href="#02"></a> 0.2</h3>
+<p>shift + Tab 向前一个缩进； Tab是向后一个缩进; 选中多行后 Ctrl + # 生成多行注释</p>
+<h2 id="1注释"><a class="markdownIt-Anchor" href="#1注释"></a> 1.注释</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello world&quot;</span>) <span class="hljs-comment">#这是单行注释</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">这是第一行注释</span><br><span class="hljs-string">这是第二行注释</span><br><span class="hljs-string"></span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="2格式化输出"><a class="markdownIt-Anchor" href="#2格式化输出"></a> 2.格式化输出</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">age = <span class="hljs-number">18</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;年龄是%d&quot;</span>%age)                               <span class="hljs-comment">#没有逗号，是和C不一样的</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;我的名字叫做%s， 我的年龄是%d&quot;</span>%(<span class="hljs-string">&quot;D-code&quot;</span>, age))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;AAA&quot;</span>,<span class="hljs-string">&quot;BBB&quot;</span>,<span class="hljs-string">&quot;CCC&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;www&quot;</span>,<span class="hljs-string">&quot;baidu&quot;</span>,<span class="hljs-string">&quot;com&quot;</span>,sep=<span class="hljs-string">&quot;.&quot;</span>)                <span class="hljs-comment">#爬虫时做链接时用这种方式输出</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello&quot;</span>,end=<span class="hljs-string">&quot;&quot;</span>)                             <span class="hljs-comment">#不换行输出</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;world&quot;</span>,end=<span class="hljs-string">&quot;\t&quot;</span>)                           <span class="hljs-comment">#空格输出</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;python&quot;</span>,end=<span class="hljs-string">&quot;\n&quot;</span>)                          <span class="hljs-comment">#换行输出</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;python&quot;</span>)<br><br>out:<br>    年龄是：<span class="hljs-number">18</span><br>    我的名字叫做D-code， 我的年龄是<span class="hljs-number">18</span><br>    AAA BBB CCC<br>    www.baidu.com<br>    helloworld	python<br>    python<br></code></pre></td></tr></table></figure>
+<h2 id="3输入"><a class="markdownIt-Anchor" href="#3输入"></a> 3.输入</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">password = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入密码&quot;</span>)  <span class="hljs-comment">#默认是str型</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;您的密码是%s&quot;</span>password)   <span class="hljs-comment">#这里输入的密码是123也要按照%s来输出，而不是%d</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(password))<br>password = <span class="hljs-built_in">int</span>()              <span class="hljs-comment">#有需求时要强制转换</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(password))<br>a = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入&quot;</span>))       <span class="hljs-comment">#在输入时候就强转</span><br><span class="hljs-built_in">print</span>(a, <span class="hljs-built_in">type</span>(a))<br><br>out:<br>    请输入密码<span class="hljs-number">123</span><br>    您的密码是<span class="hljs-number">123123</span><br>    &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class">    &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br><span class="hljs-class">    请输入333</span><br><span class="hljs-class">    333 &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="4判断"><a class="markdownIt-Anchor" href="#4判断"></a> 4.判断</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-number">90</span><br>b = <span class="hljs-number">88</span><br><span class="hljs-keyword">if</span> b &lt; a:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;under&quot;</span>)<br><span class="hljs-keyword">elif</span> b == a:           <span class="hljs-comment">#elif比较特殊</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;same&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;over&quot;</span>)<br>    <br>out:<br>    under<br></code></pre></td></tr></table></figure>
+<h2 id="5引入"><a class="markdownIt-Anchor" href="#5引入"></a> 5.引入</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random                                     <span class="hljs-comment">#引入随机库</span><br><span class="hljs-keyword">from</span> somemodule <span class="hljs-keyword">import</span> function1,function2,etc... <span class="hljs-comment">#从一些模块引入多个函数</span><br><span class="hljs-keyword">from</span> somemodule <span class="hljs-keyword">import</span> \*                         <span class="hljs-comment">#引入该模块的全部函数</span><br>a = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)                           <span class="hljs-comment">#随机生成一个整数,可以是1,2,0，默认闭区间</span><br></code></pre></td></tr></table></figure>
+<h2 id="6循环"><a class="markdownIt-Anchor" href="#6循环"></a> 6.循环</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i,<span class="hljs-string">&quot; &quot;</span>,end=<span class="hljs-string">&quot;&quot;</span>)    <span class="hljs-comment">#不换行，空格输出</span><br>    <br>out:<br>    <span class="hljs-number">0</span>  <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span> <br>   <br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">3</span>):    <span class="hljs-comment">#步进值为3</span><br>    <span class="hljs-built_in">print</span>(i,<span class="hljs-string">&quot;&quot;</span>,end=<span class="hljs-string">&quot;&quot;</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">2</span>):    <span class="hljs-comment">#验证左闭右开</span><br>    <span class="hljs-built_in">print</span>(i,<span class="hljs-string">&quot;&quot;</span>,end=<span class="hljs-string">&quot;&quot;</span>)<br>    <br>name = <span class="hljs-string">&quot;chengdu&quot;</span> <br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> name:             <span class="hljs-comment">#能输出字符串</span><br>    <span class="hljs-built_in">print</span>(x,<span class="hljs-string">&quot;&quot;</span>,end=<span class="hljs-string">&quot;\t&quot;</span>)<br><br>a = [<span class="hljs-string">&quot;aa&quot;</span>,<span class="hljs-string">&quot;bb&quot;</span>,<span class="hljs-string">&quot;cc&quot;</span>,<span class="hljs-string">&quot;dd&quot;</span>]  <span class="hljs-comment">#获取列表中的元素</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):<br>    <span class="hljs-built_in">print</span>(i,a[i])<br>    <br>out:<br>    <span class="hljs-number">0</span> <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">9</span><br>    <span class="hljs-number">0</span> <span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">6</span> <span class="hljs-number">8</span><br>    c 	h 	e 	n 	g 	d 	u<br>    <span class="hljs-number">0</span> aa<br>    <span class="hljs-number">1</span> bb<br>    <span class="hljs-number">2</span> cc<br>    <span class="hljs-number">3</span> dd<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python">i = <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">5</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;当下是第%d次循环&quot;</span>%(i+<span class="hljs-number">1</span>))<br>    <span class="hljs-built_in">print</span>(i)<br>    i += <span class="hljs-number">1</span><br><br>    <br>out:<br>    当下是第<span class="hljs-number">1</span>次循环<br>    <span class="hljs-number">0</span><br>    当下是第<span class="hljs-number">2</span>次循环<br>    <span class="hljs-number">1</span><br>    当下是第<span class="hljs-number">3</span>次循环<br>	<span class="hljs-number">2</span><br>	当下是第<span class="hljs-number">4</span>次循环<br>	<span class="hljs-number">3</span><br>	当下是第<span class="hljs-number">5</span>次循环<br>	<span class="hljs-number">4</span> <br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python">count = <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> count&lt;<span class="hljs-number">5</span>:<br>    <span class="hljs-built_in">print</span>(count,<span class="hljs-string">&quot;小于5&quot;</span>)<br>    count += <span class="hljs-number">1</span><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(count,<span class="hljs-string">&quot;大于或等于5&quot;</span>)<br>    <br>out:<br>    <span class="hljs-number">0</span> 小于<span class="hljs-number">5</span><br>    <span class="hljs-number">1</span> 小于<span class="hljs-number">5</span><br>    <span class="hljs-number">2</span> 小于<span class="hljs-number">5</span><br>    <span class="hljs-number">3</span> 小于<span class="hljs-number">5</span><br>    <span class="hljs-number">4</span> 小于<span class="hljs-number">5</span><br>    <span class="hljs-number">5</span> 大于或等于<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">break</span>      <span class="hljs-comment">#跳出for或while循环体</span><br><span class="hljs-keyword">continue</span>   <span class="hljs-comment">#跳过当次循环，进入下一轮循环</span><br><span class="hljs-keyword">pass</span>       <span class="hljs-comment">#占位空语句，不作任何事情</span><br></code></pre></td></tr></table></figure>
+<h2 id="7字符串"><a class="markdownIt-Anchor" href="#7字符串"></a> 7.字符串</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python">word = <span class="hljs-string">&#x27;字符串&#x27;</span><br>sentence = <span class="hljs-string">&quot;这是一个句子&quot;</span><br>paragraph = <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        这是一个段落</span><br><span class="hljs-string">        有好多行</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>my_str = <span class="hljs-string">&#x27;I\&#x27;m a student&#x27;</span>       <span class="hljs-comment">#用转义字符避免报错</span><br><span class="hljs-built_in">print</span>(my_str)<br><span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;tianjin&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>[<span class="hljs-number">0</span>:<span class="hljs-number">6</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>[<span class="hljs-number">0</span>:<span class="hljs-number">7</span>:<span class="hljs-number">2</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>[:<span class="hljs-number">5</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>[<span class="hljs-number">5</span>:])<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span> + <span class="hljs-string">&quot;,你好&quot;</span>)             <span class="hljs-comment">#字符串连接，使用+</span><br><span class="hljs-built_in">print</span>((<span class="hljs-built_in">str</span>+<span class="hljs-string">&quot; &quot;</span>) * <span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">r&quot;hello\ntianjin&quot;</span>)        <span class="hljs-comment">#r或R可以取消转义功能</span><br><br>out:<br>    I<span class="hljs-string">&#x27;m a student</span><br><span class="hljs-string">    tianjin</span><br><span class="hljs-string">	tianji</span><br><span class="hljs-string">	tajn</span><br><span class="hljs-string">    tianj</span><br><span class="hljs-string">	in</span><br><span class="hljs-string">	tianjin,你好</span><br><span class="hljs-string">	tianjin tianjin tianjin</span><br><span class="hljs-string">    hello\ntianjin</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#字符串常见操作</span><br>isalnum()<br>isalpha()<br>isdigit()<br>isnumeric()<br>join(sep)<br><span class="hljs-built_in">len</span>(string)<br>lstrip()<br>rstrip()<br>split(<span class="hljs-built_in">str</span>=<span class="hljs-string">&quot;&quot;</span>,num=string.count(<span class="hljs-built_in">str</span>) num=string.count(<span class="hljs-built_in">str</span>))<br><span class="hljs-built_in">bytes</span>.decode(encoding=<span class="hljs-string">&quot;utf-8&quot;</span>,errors=<span class="hljs-string">&quot;strict&quot;</span>)<br>encode(encoding=<span class="hljs-string">&#x27;UTF-8&#x27;</span>,errors=strict)<br></code></pre></td></tr></table></figure>
+<h2 id="8列表list"><a class="markdownIt-Anchor" href="#8列表list"></a> 8.列表(List)</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python">nulllist = []                      <span class="hljs-comment">#定义一个空列表</span><br>list_1 = [<span class="hljs-string">&#x27;abcd&#x27;</span>, <span class="hljs-number">334</span>, <span class="hljs-number">4.6</span>]        <span class="hljs-comment">#列表可以储存不同数据类型的数据</span><br>list_2 = [<span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-string">&quot;李四&quot;</span>,]<br><br><span class="hljs-built_in">print</span>(list_1[-<span class="hljs-number">1</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(list_1[-<span class="hljs-number">1</span>]))<br><br><span class="hljs-built_in">print</span>(list_1[<span class="hljs-number">0</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(list_1[<span class="hljs-number">0</span>]))<br><br><span class="hljs-built_in">print</span>(list_2)<br><br><span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> list_2:<br>    <span class="hljs-built_in">print</span>(name)<br>    <br>a = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>]<br><span class="hljs-built_in">print</span>(a.index(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>))            <span class="hljs-comment">#在1-4的范围（左闭右开）内查找&quot;a&quot;并返回下标，如果有多个，返回第一个</span><br>    <br>out:<br>    <span class="hljs-number">4.6</span><br>	&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">float</span>&#x27;&gt;</span><br><span class="hljs-class">	<span class="hljs-title">abcd</span></span><br><span class="hljs-class">	&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class">	[&#x27;张三&#x27;, &#x27;李四&#x27;]</span><br><span class="hljs-class">	张三</span><br><span class="hljs-class">	李四</span><br><span class="hljs-class">    3</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/09/xlJ6avE3M57mSOe.png" srcset="/img/loading.gif" lazyload alt="image-20210109154946643" /></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a.sort()               <span class="hljs-comment">#升序排序</span><br>a.sort(reverse=<span class="hljs-literal">True</span>)   <span class="hljs-comment">#降序排序</span><br>b = [[],[],[]]         <span class="hljs-comment">#二维列表</span><br></code></pre></td></tr></table></figure>
+<h2 id="9元组tuple"><a class="markdownIt-Anchor" href="#9元组tuple"></a> 9.元组（tuple）</h2>
+<ul>
+<li>
+<p>tuple与list类似，但是tuple里的元素不能进行修改，但可以包含可变对象，比如list</p>
+</li>
+<li>
+<p>定义只有一个元素的tuple也要加逗号</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">tup1 = ()<br>tup2 = (<span class="hljs-number">55</span>)<br>tup3 = (<span class="hljs-number">55</span>,)<br>tup4 = (<span class="hljs-number">55</span>, <span class="hljs-number">66</span>, <span class="hljs-number">77</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(tup1))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(tup2))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(tup3))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(tup4))<br><br>out:<br>    &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br><span class="hljs-class">	&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br><span class="hljs-class">    &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br><span class="hljs-class">    &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">tup1 = tup2 + tup4     <span class="hljs-comment">#报错，因为tup2和tup4类型不同</span><br><span class="hljs-built_in">print</span>(tup1)<br>tup1 = tup3 + tup4<br><span class="hljs-built_in">print</span>(tup1)            <span class="hljs-comment">#同类型，成功</span><br><br>a = tup4.count(<span class="hljs-number">66</span>)     <span class="hljs-comment">#统计tup4里的66出现频率</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+<h2 id="10字典dict"><a class="markdownIt-Anchor" href="#10字典dict"></a> 10.字典（dict）</h2>
+<ul>
+<li>
+<p>字典是无序的对象集合，使用键值对（key-value）存储，具有极快的查找速度</p>
+</li>
+<li>
+<p>key必须使用不可变类型</p>
+</li>
+<li>
+<p>同一个字典中，key必须是唯一的</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">info = &#123;<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Peter&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-number">18</span>&#125;       <span class="hljs-comment">#新建字典info</span><br><span class="hljs-built_in">print</span>(info[<span class="hljs-string">&quot;age&quot;</span>])<br><span class="hljs-built_in">print</span>(info.get(<span class="hljs-string">&quot;gender&quot;</span>))              <span class="hljs-comment">#用get方法，避免报错，返回none，增加健壮性</span><br><span class="hljs-built_in">print</span>(info.get(<span class="hljs-string">&quot;gender&quot;</span>,<span class="hljs-string">&#x27;没找到&#x27;</span>))      <span class="hljs-comment">#查无则返回“没找到”</span><br><span class="hljs-built_in">print</span>(info.keys()) 					   <span class="hljs-comment"># 输出dict_keys([&#x27;name&#x27;, &#x27;age&#x27;])</span><br><span class="hljs-built_in">print</span>(info.values())				   <span class="hljs-comment"># 输出dict_values([&#x27;Peter&#x27;, 18])</span><br><span class="hljs-built_in">print</span>(info.items())					   <span class="hljs-comment"># 输出dict_items([(&#x27;name&#x27;, &#x27;Peter&#x27;), (&#x27;age&#x27;, 18)])</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#增</span><br>info = &#123;<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Peter&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-number">18</span>&#125;<br>newID = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;输入学号&quot;</span>)<br>info[<span class="hljs-string">&quot;id&quot;</span>] = newID<br><span class="hljs-built_in">print</span>(info[<span class="hljs-string">&quot;id&quot;</span>])<br><span class="hljs-built_in">print</span>(info.items())<br><br>out:<br>    输入学号<span class="hljs-number">321</span><br>    <span class="hljs-number">321</span><br>    dict_items([(<span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;Peter&#x27;</span>), (<span class="hljs-string">&#x27;age&#x27;</span>, <span class="hljs-number">18</span>), (<span class="hljs-string">&#x27;id&#x27;</span>, <span class="hljs-string">&#x27;321&#x27;</span>)])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#删</span><br>info = &#123;<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Peter&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-number">18</span>&#125;<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;删除前： %s&quot;</span>%info[<span class="hljs-string">&quot;name&quot;</span>])<br><span class="hljs-keyword">del</span> info[<span class="hljs-string">&quot;name&quot;</span>]<br><span class="hljs-built_in">print</span>(info.get(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&#x27;null&#x27;</span>))<br><span class="hljs-keyword">del</span> info                         <span class="hljs-comment">#直接删除了字典info，print后会报错</span><br>info.clear()                     <span class="hljs-comment">#清空后返回空字典&#123;&#125;</span><br><br>out:<br>    删除前： Peter<br>    null<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#改</span><br>info[<span class="hljs-string">&quot;age&quot;</span>] = <span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#查，分为查键与查值</span><br><span class="hljs-built_in">print</span>(info.keys()) 					   <br><span class="hljs-comment"># 输出dict_keys([&#x27;name&#x27;, &#x27;age&#x27;])，这里是列表形式</span><br><span class="hljs-built_in">print</span>(info.values())				   <br><span class="hljs-comment"># 输出dict_values([&#x27;Peter&#x27;, 18])</span><br><span class="hljs-built_in">print</span>(info.items())					   <br><span class="hljs-comment"># 输出dict_items([(&#x27;name&#x27;, &#x27;Peter&#x27;), (&#x27;age&#x27;, 18)])</span><br><span class="hljs-comment"># 得到的是列表，列表里有元组，可以操作查询具体的了</span><br><br>info = &#123;<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Peter&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-number">18</span>&#125;<br><span class="hljs-comment">#遍历所有的键</span><br><span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> info.keys():<br>    <span class="hljs-built_in">print</span>(key)<br><span class="hljs-comment"># 遍历所有的值</span><br><span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> info.values():<br>    <span class="hljs-built_in">print</span>(value)<br><span class="hljs-comment">#同时遍历</span><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> info.items():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;key=%s, value=%s&quot;</span>%(key,value))<br>    <br>    <br>out:<br>    name<br>    age<br>    Peter<br>	<span class="hljs-number">18</span><br>    key=name, value=Peter<br>    key=age, value=<span class="hljs-number">18</span><br></code></pre></td></tr></table></figure>
+<p>参照一下字典的思想，解决一下for循环中同时获取index与value的问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#使用枚举函数，同时拿到列表中的下标和元素内容</span><br>mylist = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(mylist))<br><br><span class="hljs-keyword">for</span> i,x <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(mylist):<br>    <span class="hljs-built_in">print</span>(i,x)<br>    <br>out:<br>	&lt;<span class="hljs-built_in">enumerate</span> <span class="hljs-built_in">object</span> at <span class="hljs-number">0x00000203F0F23E08</span>&gt;<br>	<span class="hljs-number">0</span> a<br>	<span class="hljs-number">1</span> b<br>	<span class="hljs-number">2</span> c<br>	<span class="hljs-number">3</span> d<br></code></pre></td></tr></table></figure>
+<h2 id="11集合set"><a class="markdownIt-Anchor" href="#11集合set"></a> 11.集合(set)</h2>
+<ul>
+<li>
+<p>set与dict类似，也是一组key的集合，但是不存储value。由于key不能重复，所以set中无重复值，可以用来去重复</p>
+</li>
+<li>
+<p>set是无序的，重复元素在set中被自动过滤</p>
+</li>
+</ul>
+<h3 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h3>
+<p><img src="https://i.loli.net/2021/01/10/s9SQGhvMPTNVqHw.png" srcset="/img/loading.gif" lazyload alt="image-20210110003138984" /></p>
+<h2 id="12函数function"><a class="markdownIt-Anchor" href="#12函数function"></a> 12.函数（Function）</h2>
+<p>Python中函数可以直接返回多个值，函数中的局部变量用global来声明即可改变全局变量</p>
+<h2 id="13文件操作"><a class="markdownIt-Anchor" href="#13文件操作"></a> 13.文件操作</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)    <span class="hljs-comment">#打开文件，write模式，不存在文件时会自动创建</span><br>f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)    <span class="hljs-comment">#打开文件，read模式，不存在文件时会报错</span><br>f.close()                    <span class="hljs-comment">#关闭文件</span><br><br><br>f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)    <span class="hljs-comment">#打开文件，write模式</span><br>f.write(<span class="hljs-string">&quot;Hello world!&quot;</span>)<br>f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)<br>content = f.read(<span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(content)               <span class="hljs-comment">#得到“Hello”</span><br>content = f.read(<span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(content)               <span class="hljs-comment">#得到“ worl”，说明指针不再是指向文件开始处了</span><br>f.close()                    <span class="hljs-comment">#关闭文件</span><br> <br>f.readline()                 <span class="hljs-comment">#读文件，一次读取一行</span><br>f.readlines()                <span class="hljs-comment">#读文件，一次读取所有行</span><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;text1.txt&quot;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    f.write(<span class="hljs-string">&quot;python文件操作&quot;</span>)<br><span class="hljs-comment"># 使用with语句读取文件内容</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;text1.txt&quot;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-built_in">print</span>(f.read())<br><br><span class="hljs-keyword">import</span> os<br>os.rename(<span class="hljs-string">&quot;text.txt&quot;</span>,<span class="hljs-string">&quot;text0.txt&quot;</span>)	<span class="hljs-comment"># 文件重命名</span><br>os.remove(<span class="hljs-string">&quot;text1.txt&quot;</span>)	<span class="hljs-comment"># 删除文件</span><br></code></pre></td></tr></table></figure>
+<h2 id="14异常处理"><a class="markdownIt-Anchor" href="#14异常处理"></a> 14.异常处理</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># input()：用于接收输入。</span><br><br>score = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入你的分数&quot;</span>)						<span class="hljs-comment"># input函数接收输入，为字符串类型</span><br>score = <span class="hljs-built_in">float</span>(score)								<span class="hljs-comment"># 将分数转化为数字类型</span><br><br><span class="hljs-comment"># try:… except Exception:… 是Python中用于捕获异常的语句，如果try中的语句出现错误，则会执行except中的语句。</span><br><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-keyword">if</span> <span class="hljs-number">100</span>&gt;=score&gt;=<span class="hljs-number">90</span>:								<span class="hljs-comment"># 判断输入的值是否大于等级分数</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;优&quot;</span>)								   <span class="hljs-comment"># 满足条件后输出等级</span><br>    <span class="hljs-keyword">elif</span> <span class="hljs-number">90</span> &gt; score &gt;= <span class="hljs-number">80</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;良&quot;</span>)<br>    <span class="hljs-keyword">elif</span> <span class="hljs-number">80</span>&gt;score&gt;<span class="hljs-number">0</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;中&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;差&quot;</span>)<br><span class="hljs-keyword">except</span> Exception:                                  <span class="hljs-comment">#这种是捕获所有异常</span><br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;请输入正确的分数&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;test1&quot;</span>)<br><br>    f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;test1.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)             <span class="hljs-comment">#不存在该文件，报错，文件没找到属于IO异常</span><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;test2&quot;</span>)                         <span class="hljs-comment">#异常，不会被执行</span><br><br><span class="hljs-keyword">except</span> IOError:                            <span class="hljs-comment">#如果是IO类型的报错，就pass，所以结果没报错</span><br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result：               <span class="hljs-comment">#用as，将报错输出，但不是红色那种</span><br>	<span class="hljs-built_in">print</span>(result)<br>out:<br>    test1<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">try</span>:<br>    f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;123.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>)                   <span class="hljs-comment">#当不存在123.txt文件时</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            content = f.readline()<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(content) == <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">break</span><br>            time.sleep(<span class="hljs-number">2</span>)<br>            <span class="hljs-built_in">print</span>(content)<br>    <span class="hljs-keyword">finally</span>:<br>        f.close()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件关闭&quot;</span>)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;发生异常&quot;</span>)<br>    <br>out:<br>    发生异常<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">try</span>:<br>    f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;test.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>)                <span class="hljs-comment">#存在test.txt文件时</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            content = f.readline()<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(content) == <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">break</span><br>            time.sleep(<span class="hljs-number">2</span>)<br>            <span class="hljs-built_in">print</span>(content,end=<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-keyword">finally</span>:<br>        f.close()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件关闭&quot;</span>)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;发生异常&quot;</span>)<br>    <br>out:<br>    Hello world!<br>	Hello world!<br>	Hello world!<br>	Hello world!<br>	Hello world!<br>	Hello world!<br>	Hello world!<br>	Hello world!<br><br>	文件关闭<br>    <br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python%E5%9F%BA%E7%A1%80/">python基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/11/Basic_Python(2)/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python基础手册（2）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/10/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85Linux/">
+                        <span class="hidden-mobile">在Windows环境下安装Linux虚拟机</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
