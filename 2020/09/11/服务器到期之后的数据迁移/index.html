@@ -16,23 +16,27 @@
   <meta name="author" content="Dcode">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文为西瓜书第一章简要梳理笔记📒">
+    <meta name="description" content="服务器到期了🖥，部署在旧服务器的数据需要迁移在新的服务器上，才能保证博客网站的运行，完成后整理一下此次过程（此博客是初代基于springboot与semantic UI开发的前后端分离博客）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="西瓜书 01章 绪论">
-<meta property="og:url" content="http://example.com/2022/01/11/%E7%BB%AA%E8%AE%BA/index.html">
+<meta property="og:title" content="服务器到期之后的数据迁移">
+<meta property="og:url" content="http://example.com/2020/09/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%B0%E6%9C%9F%E4%B9%8B%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/index.html">
 <meta property="og:site_name" content="Dcode的技术博客">
-<meta property="og:description" content="本文为西瓜书第一章简要梳理笔记📒">
+<meta property="og:description" content="服务器到期了🖥，部署在旧服务器的数据需要迁移在新的服务器上，才能保证博客网站的运行，完成后整理一下此次过程（此博客是初代基于springboot与semantic UI开发的前后端分离博客）">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/01/10/LCaU1nYwvuXZGO9.png">
-<meta property="article:published_time" content="2022-01-11T15:21:16.000Z">
-<meta property="article:modified_time" content="2022-01-15T07:24:43.866Z">
+<meta property="og:image" content="https://i.loli.net/2021/02/12/WeYgDU4LJr5tFci.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/12/y5IaPQS8zedYv6o.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/12/dZWD4JEFhzwvous.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/12/PXIjrEsGzbqyOad.png">
+<meta property="article:published_time" content="2020-09-11T12:21:48.000Z">
+<meta property="article:modified_time" content="2022-02-08T08:25:23.861Z">
 <meta property="article:author" content="Dcode">
-<meta property="article:tag" content="吃瓜计划">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="windows">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/01/10/LCaU1nYwvuXZGO9.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/12/WeYgDU4LJr5tFci.png">
   
   
-  <title>西瓜书 01章 绪论 - Dcode的技术博客</title>
+  <title>服务器到期之后的数据迁移 - Dcode的技术博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -178,7 +182,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="西瓜书 01章 绪论">
+            <span class="h2" id="subtitle" title="服务器到期之后的数据迁移">
               
             </span>
 
@@ -188,8 +192,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-11 23:21" pubdate>
-        2022年1月11日 晚上
+      <time datetime="2020-09-11 20:21" pubdate>
+        2020年9月11日 晚上
       </time>
     </span>
   
@@ -199,7 +203,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      729 字
+      434 字
     </span>
   
 
@@ -208,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7 分钟
+      4 分钟
     </span>
   
 
@@ -237,84 +241,29 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">西瓜书 01章 绪论</h1>
+            <h1 style="display: none">服务器到期之后的数据迁移</h1>
             
             <div class="markdown-body">
-              <h2 id="11机器学习的总思路"><a class="markdownIt-Anchor" href="#11机器学习的总思路"></a> 1.1机器学习的总思路</h2>
-<p><code>data -&gt; model -&gt; result</code></p>
-<h2 id="12基本术语"><a class="markdownIt-Anchor" href="#12基本术语"></a> 1.2基本术语</h2>
-<h3 id="121数据集"><a class="markdownIt-Anchor" href="#121数据集"></a> 1.2.1数据集</h3>
-<ul>
-<li>数据集（<em>Dataset</em>）由一条条记录组成，每条记录是一个示例，也等于一个向量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，具有i个特征维度，每个维度有j种取值</li>
-<li>一个<em>Dataset</em>中有<em>m</em>个数据，即有<em>m</em>个记录，即有<em>m</em>个<em>i</em>维向量，即<em>Dataset</em>可以看作是一个矩阵</li>
-<li>这样的数据集所处的样本空间大小是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>j</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">j^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.019104em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span></li>
-<li>一般假设每个样本是独立同分布（<em>iid</em>）的</li>
-</ul>
-<h3 id="122训练集"><a class="markdownIt-Anchor" href="#122训练集"></a> 1.2.2训练集</h3>
-<ul>
-<li>从现有数据集中抽出一部分用于学习已有数据集的数据特征从而得到规律</li>
-</ul>
-<h3 id="123测试集"><a class="markdownIt-Anchor" href="#123测试集"></a> 1.2.3测试集</h3>
-<ul>
-<li>从现有数据集中抽出一部分用于检测训练得到规律的正确性</li>
-<li>三个集合的关系<img src="https://s2.loli.net/2022/01/10/LCaU1nYwvuXZGO9.png" srcset="/img/loading.gif" lazyload alt="image-20220110124052492" style="zoom:33%;" /></li>
-</ul>
-<h3 id="124机器学习分类"><a class="markdownIt-Anchor" href="#124机器学习分类"></a> 1.2.4机器学习分类</h3>
-<ul>
-<li>监督学习：有<em>Tag</em>的<em>Dataset</em>，如分类与回归</li>
-<li>无监督学习：无<em>Tag</em>，如聚类</li>
-<li>强化学习：在反馈的过程中不断根据环境调整学习，比如扫地机器人的路线选择、AlphaGo等</li>
-</ul>
-<h3 id="125泛化能力"><a class="markdownIt-Anchor" href="#125泛化能力"></a> 1.2.5泛化能力</h3>
-<ul>
-<li>可以理解为模型在新的陌生数据上的使用效果</li>
-</ul>
-<h3 id="126假设空间"><a class="markdownIt-Anchor" href="#126假设空间"></a> 1.2.6假设空间</h3>
-<ul>
-<li>归纳与演绎
-<ul>
-<li>归纳：个性中找出共性，广义上大体相当于从样例中学习，狭义上指概念学习</li>
-<li>演绎：把共性的规律应用在个性个体</li>
-</ul>
-</li>
-<li>概念学习
-<ul>
-<li>学习过程中是在假设空间中搜索的过程，目标是找到与训练集匹配的假设</li>
-</ul>
-</li>
-<li>假设空间
-<ul>
-<li>可以理解为数据可能出现的所有情况组合构成的空间</li>
-</ul>
-</li>
-<li>版本空间
-<ul>
-<li>在假设空间中取一个与训练集一致的子空间即为版本空间，这里的“一致”应当是说版本空间与训练集中的数据<strong>不矛盾</strong>，而非完全一一对应</li>
-</ul>
-</li>
-</ul>
-<h3 id="127归纳偏好"><a class="markdownIt-Anchor" href="#127归纳偏好"></a> 1.2.7归纳偏好</h3>
-<ul>
-<li>
-<p>设置目的：为了确定哪种假设更好</p>
-</li>
-<li>
-<p>设置原则：领域知识经验、奥卡姆剃刀原则（即选择最简单的）等</p>
-</li>
-<li>
-<p>NFL(No Free Lunch)定理：在假设空间均匀分布时，算法无用</p>
-<ul>
-<li>
-<blockquote>
-<p>启示：机器学习要结合具体问题实现算法</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>本文总结于：《机器学习》第一章 by.周志华</p>
-</blockquote>
+              <h1 id="服务器到期之后的数据迁移"><a class="markdownIt-Anchor" href="#服务器到期之后的数据迁移"></a> 服务器到期之后的数据迁移</h1>
+<h2 id="1环境"><a class="markdownIt-Anchor" href="#1环境"></a> 1.环境</h2>
+<h5 id="仍然使用阿里云服务器购买和上次一样的区域的服务器主要是方便迁移故继续选择华北2-北京"><a class="markdownIt-Anchor" href="#仍然使用阿里云服务器购买和上次一样的区域的服务器主要是方便迁移故继续选择华北2-北京"></a> 仍然使用阿里云服务器，购买和上次一样的区域的服务器，主要是方便迁移，故继续选择：华北2-北京</h5>
+<h2 id="2生成旧实例的镜像"><a class="markdownIt-Anchor" href="#2生成旧实例的镜像"></a> 2.生成旧实例的镜像</h2>
+<h5 id="这一步是生成之前服务器的镜像即可将所有数据保留以便后续转移到新实例中去"><a class="markdownIt-Anchor" href="#这一步是生成之前服务器的镜像即可将所有数据保留以便后续转移到新实例中去"></a> 这一步是生成之前服务器的镜像，即可将所有数据保留，以便后续转移到新实例中去。</h5>
+<h5 id="点击下图中的管理数据创建自定义镜像即可"><a class="markdownIt-Anchor" href="#点击下图中的管理数据创建自定义镜像即可"></a> 点击下图中的管理数据，创建自定义镜像即可。</h5>
+<p><img src="https://i.loli.net/2021/02/12/WeYgDU4LJr5tFci.png" srcset="/img/loading.gif" lazyload alt="image-20210212213607628" /></p>
+<h2 id="3更换云盘"><a class="markdownIt-Anchor" href="#3更换云盘"></a> 3.更换云盘</h2>
+<h5 id="在新实例中将云盘更换即选择上图中更操作系统的选项"><a class="markdownIt-Anchor" href="#在新实例中将云盘更换即选择上图中更操作系统的选项"></a> 在新实例中将云盘更换，即选择上图中“更操作系统”的选项。</h5>
+<h2 id="4配置安全组文件"><a class="markdownIt-Anchor" href="#4配置安全组文件"></a> 4.配置安全组文件</h2>
+<h5 id="导出旧实例的安全组文件为json格式文件再去新实例中导入该文件即可"><a class="markdownIt-Anchor" href="#导出旧实例的安全组文件为json格式文件再去新实例中导入该文件即可"></a> 导出旧实例的安全组文件为json格式文件，再去新实例中导入该文件即可。</h5>
+<p><img src="https://i.loli.net/2021/02/12/y5IaPQS8zedYv6o.png" srcset="/img/loading.gif" lazyload alt="image-20210212214433451" /></p>
+<h2 id="5项目配置"><a class="markdownIt-Anchor" href="#5项目配置"></a> 5.项目配置</h2>
+<h5 id="使用window系统的远程连接进行虚拟机上的项目配置-登录密码是更换云盘时设置的用户名为默认的administrator"><a class="markdownIt-Anchor" href="#使用window系统的远程连接进行虚拟机上的项目配置-登录密码是更换云盘时设置的用户名为默认的administrator"></a> 使用window系统的远程连接，进行虚拟机上的项目配置。登录密码是更换云盘时设置的，用户名为默认的administrator</h5>
+<h5 id="有三个地方要注意"><a class="markdownIt-Anchor" href="#有三个地方要注意"></a> 有三个地方要注意，</h5>
+<h5 id="一是数据库要打开保证在winr后输入servicesmsc后找到mysql使其运行再在navicat里运行数据库连接"><a class="markdownIt-Anchor" href="#一是数据库要打开保证在winr后输入servicesmsc后找到mysql使其运行再在navicat里运行数据库连接"></a> 一是数据库要打开，保证在win+R后输入services.msc后，找到mysql使其运行，再在Navicat里运行数据库连接。</h5>
+<p><img src="https://i.loli.net/2021/02/12/dZWD4JEFhzwvous.png" srcset="/img/loading.gif" lazyload alt="image-20210212214843131" /></p>
+<h5 id="二是要在tomcat的bin文件里运行startupbat文件运行后不要关闭终端"><a class="markdownIt-Anchor" href="#二是要在tomcat的bin文件里运行startupbat文件运行后不要关闭终端"></a> 二是要在Tomcat的bin文件里运行startup.bat文件，运行后不要关闭终端</h5>
+<h5 id="三是更换域名解析的ip地址到新的实例的公网ip这个在手机上阿里云app设置也挺方便"><a class="markdownIt-Anchor" href="#三是更换域名解析的ip地址到新的实例的公网ip这个在手机上阿里云app设置也挺方便"></a> 三是更换域名解析的ip地址到新的实例的公网ip，这个在手机上阿里云app设置也挺方便</h5>
+<p><img src="https://i.loli.net/2021/02/12/PXIjrEsGzbqyOad.png" srcset="/img/loading.gif" lazyload alt="image-20210212214706189" /></p>
 
             </div>
             <hr>
@@ -324,7 +273,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                      <a class="hover-with-bg" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
                     
                   </div>
                 
@@ -332,7 +281,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%90%83%E7%93%9C%E8%AE%A1%E5%88%92/">吃瓜计划</a>
+                      <a class="hover-with-bg" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+                    
+                      <a class="hover-with-bg" href="/tags/windows/">windows</a>
                     
                   </div>
                 
@@ -349,9 +300,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/11/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
+                      <a href="/2021/01/10/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85Linux/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">西瓜书 02章 模型评估与选择</span>
+                        <span class="hidden-mobile">在Windows环境下安装Linux虚拟机</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -359,8 +310,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/11/Basic_python(1)/">
-                        <span class="hidden-mobile">Python基础手册（1）</span>
+                      <a href="/2020/06/11/%E7%89%A9%E5%8C%96%E4%B8%8A-%E4%BD%9C%E5%9B%BE%E6%BA%90%E7%A0%81/">
+                        <span class="hidden-mobile">物理化学实验（上）-MATLAB作图源码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
