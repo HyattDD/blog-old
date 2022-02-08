@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/gou.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dcode">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文主要记录在物理化学实验课使用Matlab处理数据，绘制简单二维曲线的代码，方便回顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物理化学实验（上）-MATLAB作图源码">
+<meta property="og:url" content="http://example.com/2020/06/11/%E7%89%A9%E5%8C%96%E4%B8%8A-%E4%BD%9C%E5%9B%BE%E6%BA%90%E7%A0%81/index.html">
+<meta property="og:site_name" content="Dcode的技术博客">
+<meta property="og:description" content="本文主要记录在物理化学实验课使用Matlab处理数据，绘制简单二维曲线的代码，方便回顾">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/ywrS7WQicdLnBDR.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/PRXUtn9Dj2YNEVb.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/sQUPGS5LYK3VoHR.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/QENVRjkFr4qXaAg.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/JTN1SLHIOAteKMX.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/nNYuRUiOh3d4Bvf.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/t4EgzHlTJkKfOA5.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/gFnP8ASbiTfN6y5.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/RK65hbxAZkFyGW4.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/10/FqmtXv1ekIL6Ji4.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/26/E4MBmAe3VOqIRZf.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/26/rWod7pgElmSzvkq.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/26/YidEXxLcqWFsD6j.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/26/da9tgOyGbuJqkRX.png">
+<meta property="article:published_time" content="2020-06-11T15:21:16.000Z">
+<meta property="article:modified_time" content="2022-02-08T07:07:39.905Z">
+<meta property="article:author" content="Dcode">
+<meta property="article:tag" content="Matlab基础">
+<meta property="article:tag" content="绘图">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/10/10/ywrS7WQicdLnBDR.jpg">
+  
+  
+  <title>物理化学实验（上）-MATLAB作图源码 - Dcode的技术博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dcode的技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg3.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="物理化学实验（上）-MATLAB作图源码">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-11 23:21" pubdate>
+        2020年6月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      64 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">物理化学实验（上）-MATLAB作图源码</h1>
+            
+            <div class="markdown-body">
+              <h2 id="0linefit"><a class="markdownIt-Anchor" href="#0linefit"></a> 0.linefit</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[k,b]</span>=<span class="hljs-title">linefit</span><span class="hljs-params">(x,y)</span>%实现线性拟合功能</span><br>n=<span class="hljs-built_in">length</span>(x);<span class="hljs-comment">%获取x数组元素个数</span><br>x=<span class="hljs-built_in">reshape</span>(x,n,<span class="hljs-number">1</span>);<span class="hljs-comment">%把x转置为n行一列的矩阵</span><br>y=<span class="hljs-built_in">reshape</span>(y,n,<span class="hljs-number">1</span>);<span class="hljs-comment">%把y转置为n行一列的矩阵</span><br>A=[x,<span class="hljs-built_in">ones</span>(n,<span class="hljs-number">1</span>)];<span class="hljs-comment">%将x与同行数的列向量合并为一个n行2列的矩阵</span><br>bb=y;<br>B=A&#x27;*A;<span class="hljs-comment">%得到一个二行二列方阵</span><br>bb=A&#x27;*bb;<br>yy=B\bb;<br>k=yy(<span class="hljs-number">1</span>);<br>b=yy(<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+<h2 id="1凝固点降低法测沸点"><a class="markdownIt-Anchor" href="#1凝固点降低法测沸点"></a> 1.凝固点降低法测沸点</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">x=<span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">250</span>;<br>y=[<span class="hljs-number">4.072</span>	<span class="hljs-number">4.067</span>	<span class="hljs-number">4.051</span>	<span class="hljs-number">4.020</span>	<span class="hljs-number">3.990</span>	<span class="hljs-number">3.966</span>	<span class="hljs-number">3.949</span>	<span class="hljs-number">3.941</span>	<span class="hljs-number">3.940</span>	<span class="hljs-number">3.941</span>	<span class="hljs-number">3.946</span>	<span class="hljs-number">3.951</span>	<span class="hljs-number">3.964</span>	<span class="hljs-number">3.995</span>	<span class="hljs-number">4.011</span>	<span class="hljs-number">4.031</span>	<span class="hljs-number">4.022</span>	<span class="hljs-number">4.017</span>	<span class="hljs-number">4.017</span>	<span class="hljs-number">4.014</span>	<span class="hljs-number">4.015</span>	<span class="hljs-number">4.014</span>	<span class="hljs-number">4.014</span>	<span class="hljs-number">4.014</span>	<span class="hljs-number">4.015</span><br>];<br>x1=<span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">410</span>;<br>y1=[<span class="hljs-number">4.776</span> <span class="hljs-number">4.641</span>	<span class="hljs-number">4.509</span>	<span class="hljs-number">4.376</span>	<span class="hljs-number">4.259</span>	<span class="hljs-number">4.159</span>	<span class="hljs-number">4.074</span>	<span class="hljs-number">4.029</span>	<span class="hljs-number">4.020</span>	<span class="hljs-number">4.023</span>	<span class="hljs-number">4.028</span>	<span class="hljs-number">4.031</span>	<span class="hljs-number">4.032</span>	<span class="hljs-number">4.031</span>	<span class="hljs-number">4.032</span>	<span class="hljs-number">4.032</span>	<span class="hljs-number">4.030</span>	<span class="hljs-number">4.030</span>	<span class="hljs-number">4.030</span>	<span class="hljs-number">4.03</span>	<span class="hljs-number">4.029</span>	<span class="hljs-number">4.028</span>	<span class="hljs-number">4.028</span>	<span class="hljs-number">4.028</span>	<span class="hljs-number">4.027</span>	<span class="hljs-number">4.026</span>	<span class="hljs-number">4.026</span>	<span class="hljs-number">4.025</span>	<span class="hljs-number">4.026</span>	<span class="hljs-number">4.025</span>	<span class="hljs-number">4.026</span>	<span class="hljs-number">4.025</span>	<span class="hljs-number">4.025</span>	<span class="hljs-number">4.024</span>	<span class="hljs-number">4.022</span>	<span class="hljs-number">4.020</span>	<span class="hljs-number">4.019</span>	<span class="hljs-number">4.017</span>	<span class="hljs-number">4.015</span>	<span class="hljs-number">4.013</span>	<span class="hljs-number">4.011</span><br>];<br><span class="hljs-comment">%曲线化</span><br>xx1=<span class="hljs-built_in">linspace</span>(<span class="hljs-number">10</span>,<span class="hljs-number">250</span>);<br>yy1=spline(x,y,xx1);<br><span class="hljs-built_in">plot</span>(x1,y1,<span class="hljs-string">&#x27;rs&#x27;</span>,x,y,<span class="hljs-string">&#x27;*&#x27;</span>);<span class="hljs-comment">%先把方格和星号画出来，以便使用legend</span><br><span class="hljs-built_in">hold</span> on;<span class="hljs-comment">%注意hold on,以便一张画布上画多个图线，下同</span><br><span class="hljs-built_in">plot</span>(xx1,yy1,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-comment">%plot(x,y,&#x27;*&#x27;);</span><br>xlabel(<span class="hljs-string">&#x27;t / 10 s&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;△T / ℃&#x27;</span>);<br><span class="hljs-comment">%grid on;</span><br>title(<span class="hljs-string">&#x27;溶剂冷却曲线&#x27;</span>);<br>axis([<span class="hljs-number">0</span>,<span class="hljs-number">300</span>,<span class="hljs-number">3.9</span>,<span class="hljs-number">4.2</span>]);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>([<span class="hljs-number">0</span> <span class="hljs-number">300</span>],[<span class="hljs-number">4.014</span> <span class="hljs-number">4.014</span>],<span class="hljs-string">&#x27;--&#x27;</span>);<br><br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-comment">%做曲线化，不是折线</span><br>xx2=<span class="hljs-built_in">linspace</span>(<span class="hljs-number">10</span>,<span class="hljs-number">410</span>);<br>yy2=spline(x1,y1,xx);<br><span class="hljs-built_in">plot</span>(xx2,yy2,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-comment">%plot(x,y,&#x27;*&#x27;,x1,y1,&#x27;rs&#x27;);</span><br>xlabel(<span class="hljs-string">&#x27;t / 10 s&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;T / ℃&#x27;</span>);<br><span class="hljs-comment">%grid on;</span><br><span class="hljs-comment">%title(&#x27;溶剂2&#x27;);</span><br><span class="hljs-comment">%axis([0,450,4,4.2]);</span><br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>([<span class="hljs-number">0</span> <span class="hljs-number">450</span>],[<span class="hljs-number">4.031</span> <span class="hljs-number">4.031</span>],<span class="hljs-string">&#x27;--&#x27;</span>);<br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;溶剂1&#x27;</span>,<span class="hljs-string">&#x27;溶剂2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/ywrS7WQicdLnBDR.jpg" srcset="/img/loading.gif" lazyload alt="PC1" /></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">x2=<span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">300</span>;<br>y2=[<span class="hljs-number">4.138</span>	<span class="hljs-number">4.062</span>	<span class="hljs-number">3.984</span>	<span class="hljs-number">3.916</span>	<span class="hljs-number">3.839</span>	<span class="hljs-number">3.764</span>	<span class="hljs-number">3.688</span>	<span class="hljs-number">3.615</span>	<span class="hljs-number">3.542</span>	<span class="hljs-number">3.470</span>	<span class="hljs-number">3.400</span>	<span class="hljs-number">3.332</span>	<span class="hljs-number">3.267</span>	<span class="hljs-number">3.204</span>	<span class="hljs-number">3.148</span>	<span class="hljs-number">3.103</span>	<span class="hljs-number">3.106</span>	<span class="hljs-number">3.117</span>	<span class="hljs-number">3.119</span>	<span class="hljs-number">3.117</span>	<span class="hljs-number">3.114</span>	<span class="hljs-number">3.109</span>	<span class="hljs-number">3.104</span>	<span class="hljs-number">3.098</span>	<span class="hljs-number">3.092</span>	<span class="hljs-number">3.086</span>	<span class="hljs-number">3.078</span>	<span class="hljs-number">3.072</span>	<span class="hljs-number">3.064</span>	<span class="hljs-number">3.060</span>	];<br>x3=<span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">290</span>;<br>y3=[<span class="hljs-number">4.365</span>	<span class="hljs-number">4.235</span>	<span class="hljs-number">4.106</span>	<span class="hljs-number">3.985</span>	<span class="hljs-number">3.864</span>	<span class="hljs-number">3.75</span>	<span class="hljs-number">3.638</span>	<span class="hljs-number">3.526</span>	<span class="hljs-number">3.420</span>	<span class="hljs-number">3.316</span>	<span class="hljs-number">3.212</span>	<span class="hljs-number">3.120</span>	<span class="hljs-number">3.031</span>	<span class="hljs-number">2.983</span>	<span class="hljs-number">3.045</span>	<span class="hljs-number">3.082</span>	<span class="hljs-number">3.095</span>	<span class="hljs-number">3.096</span>	<span class="hljs-number">3.093</span>	<span class="hljs-number">3.087</span>	<span class="hljs-number">3.080</span>	<span class="hljs-number">3.072</span>	<span class="hljs-number">3.063</span>	<span class="hljs-number">3.054</span>	<span class="hljs-number">3.045</span>	<span class="hljs-number">3.036</span>	<span class="hljs-number">3.027</span>	<span class="hljs-number">3.018</span>	<span class="hljs-number">3.011</span>			];<br><br>xx3=<span class="hljs-built_in">linspace</span>(<span class="hljs-number">10</span>,<span class="hljs-number">300</span>);<br>yy3=spline(x2,y2,xx3);<br><br><span class="hljs-built_in">plot</span>(x2,y2,<span class="hljs-string">&#x27;rs&#x27;</span>,x3,y3,<span class="hljs-string">&#x27;*&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><br><span class="hljs-built_in">plot</span>(xx3,yy3,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><br>xlabel(<span class="hljs-string">&#x27;t / 10 s&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;T / ℃&#x27;</span>);<br><span class="hljs-comment">%grid on;</span><br>title(<span class="hljs-string">&#x27;溶液1&#x27;</span>);<br>axis([<span class="hljs-number">0</span>,<span class="hljs-number">350</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4.15</span>]);<br><span class="hljs-built_in">hold</span> on;<br><br><span class="hljs-comment">%plot([0 450],[4.031 4.031],&#x27;--&#x27;);</span><br><span class="hljs-built_in">hold</span> on;<br><br><span class="hljs-comment">%初始数据</span><br>x4=<span class="hljs-number">190</span>:<span class="hljs-number">10</span>:<span class="hljs-number">300</span>;<br>x5=<span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">300</span>;<br>y4=[<span class="hljs-number">3.119</span>	<span class="hljs-number">3.117</span>	<span class="hljs-number">3.114</span>	<span class="hljs-number">3.109</span>	<span class="hljs-number">3.104</span>	<span class="hljs-number">3.098</span>	<span class="hljs-number">3.092</span>	<span class="hljs-number">3.086</span>	<span class="hljs-number">3.078</span>	<span class="hljs-number">3.072</span>	<span class="hljs-number">3.064</span>	<span class="hljs-number">3.060</span>];<br><span class="hljs-comment">%获得线性拟合系数</span><br>[k,b]=linefit(x4,y4);<br>y5=polyval([k,b],x5);<br><span class="hljs-built_in">plot</span>(x5,y5);<br><span class="hljs-built_in">hold</span> on;<br><br>xx4=<span class="hljs-built_in">linspace</span>(<span class="hljs-number">10</span>,<span class="hljs-number">290</span>);<br>yy4=spline(x3,y3,xx4);<br><span class="hljs-built_in">plot</span>(xx4,yy4,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-comment">%plot(x3,y3,&#x27;*&#x27;);</span><br>xlabel(<span class="hljs-string">&#x27;t / 10 s&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;△T / ℃&#x27;</span>);<br><span class="hljs-comment">%grid on;</span><br>title(<span class="hljs-string">&#x27;溶液2&#x27;</span>);<br>axis([<span class="hljs-number">0</span>,<span class="hljs-number">320</span>,<span class="hljs-number">2.9</span>,<span class="hljs-number">4.4</span>]);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-comment">%plot([0 450],[4.031 4.031],&#x27;--&#x27;);</span><br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-comment">%初始数据</span><br>x4=<span class="hljs-number">180</span>:<span class="hljs-number">10</span>:<span class="hljs-number">290</span>;<br>x5=<span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">290</span>;<br>y4=[<span class="hljs-number">3.096</span>	<span class="hljs-number">3.093</span>	<span class="hljs-number">3.087</span>	<span class="hljs-number">3.080</span>	<span class="hljs-number">3.072</span>	<span class="hljs-number">3.063</span>	<span class="hljs-number">3.054</span>	<span class="hljs-number">3.045</span>	<span class="hljs-number">3.036</span>	<span class="hljs-number">3.027</span>	<span class="hljs-number">3.018</span>	<span class="hljs-number">3.011</span>];<br><span class="hljs-comment">%获得线性拟合系数</span><br>[k,b]=linefit(x4,y4);<br>y5=polyval([k,b],x5);<br><span class="hljs-built_in">plot</span>(x5,y5);<br><br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;溶液1&#x27;</span>,<span class="hljs-string">&#x27;溶液2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/PRXUtn9Dj2YNEVb.jpg" srcset="/img/loading.gif" lazyload alt="PC2" /></p>
+<h2 id="2饱和气压"><a class="markdownIt-Anchor" href="#2饱和气压"></a> 2.饱和气压</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">A=[<span class="hljs-number">336.97</span> <span class="hljs-number">338.53</span> <span class="hljs-number">340.28</span> <span class="hljs-number">342.02</span> <span class="hljs-number">343.50</span> <span class="hljs-number">345.07</span> <span class="hljs-number">346.60</span> <span class="hljs-number">348.76</span>];<br>B=[<span class="hljs-number">55.84</span><br><span class="hljs-number">59.64</span><br><span class="hljs-number">64.44</span><br><span class="hljs-number">69.44</span><br><span class="hljs-number">73.94</span><br><span class="hljs-number">79.14</span><br><span class="hljs-number">84.04</span><br><span class="hljs-number">91.94</span><br>];<br>B=B&#x27;;<br>xx=<span class="hljs-built_in">linspace</span>(<span class="hljs-number">330</span>,<span class="hljs-number">350</span>);<br>yy=spline(A,B,xx);<br><span class="hljs-built_in">plot</span>(xx,yy,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(A,B,<span class="hljs-string">&#x27;*&#x27;</span>);<br>xlabel(<span class="hljs-string">&#x27;T / K&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;乙醇饱和蒸气压/KPa&#x27;</span>);<br>title(<span class="hljs-string">&#x27;乙醇的饱和蒸气压-温度图&#x27;</span>);<br>axis([<span class="hljs-number">336</span>,<span class="hljs-number">350</span>,<span class="hljs-number">55</span>,<span class="hljs-number">95</span>]);<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/sQUPGS5LYK3VoHR.jpg" srcset="/img/loading.gif" lazyload alt="PC1" /></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">C=[<span class="hljs-number">11.43</span><br><span class="hljs-number">11.34</span><br><span class="hljs-number">11.28</span><br><span class="hljs-number">11.21</span><br><span class="hljs-number">11.15</span><br><span class="hljs-number">11.07</span><br><span class="hljs-number">11.00</span><br><span class="hljs-number">10.93</span>];<br>C=C&#x27;;<br>D=[<span class="hljs-number">2.87</span><br><span class="hljs-number">2.89</span><br><span class="hljs-number">2.90</span><br><span class="hljs-number">2.91</span><br><span class="hljs-number">2.92</span><br><span class="hljs-number">2.94</span><br><span class="hljs-number">2.95</span><br><span class="hljs-number">2.97</span><br>];<br>D=D&#x27;;<br><span class="hljs-comment">%xx=linspace(2.85,3);</span><br><span class="hljs-comment">%yy=spline(D,C,xx);</span><br><br>[k,b]=linefit(D,C);<br>x=<span class="hljs-number">2.5</span>:<span class="hljs-number">0.1</span>:<span class="hljs-number">3</span>;<br>y=polyval([k,b],x);<br><span class="hljs-built_in">plot</span>(x,y);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(D,C,<span class="hljs-string">&#x27;*&#x27;</span>);<br>xlabel(<span class="hljs-string">&#x27;(10^3/T)K-1&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;ln(P/Pa)&#x27;</span>);<br>title(<span class="hljs-string">&#x27;ln(P/Pa)-1/T图&#x27;</span>);<br>axis([<span class="hljs-number">2.85</span>,<span class="hljs-number">3</span>,<span class="hljs-number">10.9</span>,<span class="hljs-number">11.5</span>]);<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/QENVRjkFr4qXaAg.jpg" srcset="/img/loading.gif" lazyload alt="PC2" /></p>
+<h2 id="3平衡常数"><a class="markdownIt-Anchor" href="#3平衡常数"></a> 3.平衡常数</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs matlab">A = [<span class="hljs-number">3.0936</span>	<span class="hljs-number">3.1432</span>	<span class="hljs-number">3.1934</span>	<span class="hljs-number">3.2452</span>	<span class="hljs-number">3.2987</span>];<br>B = [<span class="hljs-number">-3.2648</span>	<span class="hljs-number">-4.1842</span> 	<span class="hljs-number">-5.1592</span>	  <span class="hljs-number">-6.1351</span>	<span class="hljs-number">-7.1816</span>];<br><span class="hljs-built_in">plot</span>(A,B,<span class="hljs-string">&#x27;bs&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>C=<span class="hljs-number">3</span>:<span class="hljs-number">0.1</span>:<span class="hljs-number">3.4</span>;<br>[k,b]=linefit(A,B);<br>y=polyval([k,b],C);<br><span class="hljs-built_in">plot</span>(C,y);<br><br>xlabel(<span class="hljs-string">&#x27;(10^3/T)/K-1&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;lnK^θ&#x27;</span>);<br><span class="hljs-comment">%title(&#x27;ln(P/Pa)-1/T图&#x27;);</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/JTN1SLHIOAteKMX.jpg" srcset="/img/loading.gif" lazyload alt="PC1" /></p>
+<h2 id="4反应焓"><a class="markdownIt-Anchor" href="#4反应焓"></a> 4.反应焓</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB"><span class="hljs-comment">%拟合直线1</span><br>A=<span class="hljs-number">12</span>:<span class="hljs-number">1</span>:<span class="hljs-number">19</span>;<br>B=[<span class="hljs-number">6.073</span> <span class="hljs-number">6.079</span> <span class="hljs-number">6.083</span>	<span class="hljs-number">6.09</span>	<span class="hljs-number">6.094</span>	<span class="hljs-number">6.098</span>	<span class="hljs-number">6.1</span>	 <span class="hljs-number">6.102</span>];<br><span class="hljs-built_in">plot</span>(A,B,<span class="hljs-string">&#x27;b*&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>C=[A,<span class="hljs-number">19.5</span>];<br>[k,b]=linefit(A,B);<br>y=polyval([k,b],C);<br><span class="hljs-built_in">plot</span>(C,y);<br>axis([<span class="hljs-number">10</span>,<span class="hljs-number">29</span>,<span class="hljs-number">4.8</span>,<span class="hljs-number">6.3</span>]);<br><span class="hljs-built_in">hold</span> on;<br><br><span class="hljs-comment">%拟合直线2</span><br>D=<span class="hljs-number">20</span>:<span class="hljs-number">1</span>:<span class="hljs-number">27</span>;<br>E=[<span class="hljs-number">5.042</span>	<span class="hljs-number">5.068</span>	<span class="hljs-number">5.071</span>	<span class="hljs-number">5.068</span>	<span class="hljs-number">5.074</span>	<span class="hljs-number">5.072</span>	<span class="hljs-number">5.08</span>	<span class="hljs-number">5.084</span>];<br><span class="hljs-built_in">plot</span>(D,E,<span class="hljs-string">&#x27;b*&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>F=[<span class="hljs-number">19.5</span>,D];<br>[k1,b1]=linefit(D,E);<br>y1=polyval([k1,b1],F);<br><span class="hljs-built_in">plot</span>(F,y1,<span class="hljs-string">&#x27;b&#x27;</span>);<br><br><span class="hljs-comment">%连接中间两点作斜直线</span><br><span class="hljs-built_in">hold</span> on;<br>G=[<span class="hljs-number">19</span>,<span class="hljs-number">20</span>];<br>H=[<span class="hljs-number">6.102</span>,<span class="hljs-number">5.042</span>];<br><span class="hljs-built_in">plot</span>(G,H,<span class="hljs-string">&#x27;b&#x27;</span>)<br><br><span class="hljs-comment">%绘制垂直直线</span><br><span class="hljs-built_in">hold</span> on;<br>line([<span class="hljs-number">19.5</span>,<span class="hljs-number">19.5</span>],[<span class="hljs-number">4.8</span>,<span class="hljs-number">6.5</span>],<span class="hljs-string">&#x27;linestyle&#x27;</span>,<span class="hljs-string">&#x27;--&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>);<br><br><span class="hljs-comment">%绘制两个交点圆点</span><br><span class="hljs-built_in">hold</span> on;<br>x1=<span class="hljs-number">19.5</span>;<br>y1=k*x1+b;<br><span class="hljs-built_in">plot</span>(x1,y1,<span class="hljs-string">&#x27;ro&#x27;</span>);<br>x2=<span class="hljs-number">19.5</span>;<br>y2=k1*x2+b1;<br><span class="hljs-built_in">plot</span>(x2,y2,<span class="hljs-string">&#x27;ro&#x27;</span>);<br><br><span class="hljs-comment">%绘制横纵坐标注释</span><br>xlabel(<span class="hljs-string">&#x27;t/min&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;△T/℃&#x27;</span>);<br><span class="hljs-comment">%title(&#x27;图1 标准曲线图&#x27;,&#x27;position&#x27;,[-0.7 200]);</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/nNYuRUiOh3d4Bvf.png" srcset="/img/loading.gif" lazyload alt="PC1" /></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB"><span class="hljs-comment">%拟合直线1</span><br>A=<span class="hljs-number">2</span>:<span class="hljs-number">1</span>:<span class="hljs-number">9</span>;<br>B=[<span class="hljs-number">6.334</span> <span class="hljs-number">6.332</span> <span class="hljs-number">6.329</span>	<span class="hljs-number">6.327</span>	<span class="hljs-number">6.326</span>	<span class="hljs-number">6.325</span>	<span class="hljs-number">6.324</span>	 <span class="hljs-number">6.323</span>];<br><span class="hljs-built_in">plot</span>(A,B,<span class="hljs-string">&#x27;b*&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>C=[A,<span class="hljs-number">9.5</span>];<br>[k,b]=linefit(A,B);<br>y=polyval([k,b],C);<br><span class="hljs-built_in">plot</span>(C,y);<br>axis([<span class="hljs-number">1</span>,<span class="hljs-number">21</span>,<span class="hljs-number">6.2</span>,<span class="hljs-number">7</span>]);<br><span class="hljs-built_in">hold</span> on;<br><br><span class="hljs-comment">%拟合直线2</span><br>D=<span class="hljs-number">10</span>:<span class="hljs-number">1</span>:<span class="hljs-number">17</span>;<br>E=[<span class="hljs-number">6.796</span>	<span class="hljs-number">6.826</span>	<span class="hljs-number">6.825</span>	<span class="hljs-number">6.821</span>	<span class="hljs-number">6.817</span>	<span class="hljs-number">6.814</span>	<span class="hljs-number">6.812</span>	<span class="hljs-number">6.810</span>];<br><span class="hljs-built_in">plot</span>(D,E,<span class="hljs-string">&#x27;b*&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>F=[<span class="hljs-number">9.5</span>,D];<br>[k1,b1]=linefit(D,E);<br>y1=polyval([k1,b1],F);<br><span class="hljs-built_in">plot</span>(F,y1,<span class="hljs-string">&#x27;b&#x27;</span>);<br><br><span class="hljs-comment">%连接中间两点作斜直线</span><br><span class="hljs-built_in">hold</span> on;<br>G=[<span class="hljs-number">9</span>,<span class="hljs-number">10</span>];<br>H=[<span class="hljs-number">6.323</span>,<span class="hljs-number">6.796</span>];<br>kk=H(<span class="hljs-number">2</span>)-H(<span class="hljs-number">1</span>);<br><span class="hljs-built_in">plot</span>(G,H,<span class="hljs-string">&#x27;b&#x27;</span>)<br><br><span class="hljs-comment">%绘制垂直直线</span><br><span class="hljs-built_in">hold</span> on;<br>line([<span class="hljs-number">9.5</span>,<span class="hljs-number">9.5</span>],[<span class="hljs-number">6.2</span>,<span class="hljs-number">7</span>],<span class="hljs-string">&#x27;linestyle&#x27;</span>,<span class="hljs-string">&#x27;--&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>);<br><br><span class="hljs-comment">%绘制两个交点圆点</span><br><span class="hljs-built_in">hold</span> on;<br>x1=<span class="hljs-number">9.5</span>;<br>y1=k*x1+b;<br><span class="hljs-built_in">plot</span>(x1,y1,<span class="hljs-string">&#x27;ro&#x27;</span>);<br>x2=<span class="hljs-number">9.5</span>;<br>y2=k1*x2+b1;<br><span class="hljs-built_in">plot</span>(x2,y2,<span class="hljs-string">&#x27;ro&#x27;</span>);<br><br><span class="hljs-comment">%绘制横纵坐标注释</span><br>xlabel(<span class="hljs-string">&#x27;t/min&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;△T/℃&#x27;</span>);<br><span class="hljs-comment">%title(&#x27;图1 标准曲线图&#x27;,&#x27;position&#x27;,[-0.7 200]);</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/t4EgzHlTJkKfOA5.png" srcset="/img/loading.gif" lazyload alt="PC2" /></p>
+<h2 id="5凝聚二组分"><a class="markdownIt-Anchor" href="#5凝聚二组分"></a> 5.凝聚二组分</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">A = <span class="hljs-number">0</span>:<span class="hljs-number">0.1</span>:<span class="hljs-number">1</span>;<br>B = [<span class="hljs-number">1.3613</span>	<span class="hljs-number">1.3631</span>	<span class="hljs-number">1.3649</span>	<span class="hljs-number">1.3678</span>	<span class="hljs-number">1.3701</span>	<span class="hljs-number">1.3722</span>	<span class="hljs-number">1.3748</span>	<span class="hljs-number">1.3767</span>	<span class="hljs-number">1.3792</span>	<span class="hljs-number">1.3815</span>	<span class="hljs-number">1.3822</span>];<br><span class="hljs-built_in">plot</span>(A,B,<span class="hljs-string">&#x27;bs&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>C=<span class="hljs-number">0</span>:<span class="hljs-number">0.1</span>:<span class="hljs-number">1</span>;<br>[k,b]=linefit(A,B);<br>y=polyval([k,b],C);<br><span class="hljs-built_in">plot</span>(C,y);<br><br>ylabel(<span class="hljs-string">&#x27;n^tD&#x27;</span>);<br>xlabel(<span class="hljs-string">&#x27;丙醇质量分数&#x27;</span>);<br><span class="hljs-comment">%title(&#x27;ln(P/Pa)-1/T图&#x27;);</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/gFnP8ASbiTfN6y5.png" srcset="/img/loading.gif" lazyload alt="fig1" /></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB"><span class="hljs-comment">%沸点组成图</span><br>A = [<span class="hljs-number">0</span> <span class="hljs-number">6.33</span> <span class="hljs-number">26.24</span> <span class="hljs-number">41.18</span> <span class="hljs-number">54.75</span> <span class="hljs-number">69.68</span> <span class="hljs-number">77.38</span> <span class="hljs-number">100</span>];<br>B = [<span class="hljs-number">80.82</span> <span class="hljs-number">83.40</span> <span class="hljs-number">84.80</span> <span class="hljs-number">86.62</span> <span class="hljs-number">88.70</span> <span class="hljs-number">92.10</span> <span class="hljs-number">94.20</span> <span class="hljs-number">98.20</span>];<br><span class="hljs-built_in">plot</span>(A,B,<span class="hljs-string">&#x27;bs&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>a = <span class="hljs-built_in">linspace</span>(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>);<span class="hljs-comment">%曲线化</span><br>b = spline(A,B,a);<br><span class="hljs-comment">%plot(a,b,&#x27;b&#x27;);</span><br><span class="hljs-built_in">hold</span> on;<br><br><span class="hljs-comment">%气相</span><br>C = [<span class="hljs-number">0</span> <span class="hljs-number">1.81</span>	<span class="hljs-number">11.76</span>	<span class="hljs-number">20.36</span>	<span class="hljs-number">28.05</span>	<span class="hljs-number">53.39</span>	<span class="hljs-number">64.25</span> <span class="hljs-number">100</span>];<br>D = [<span class="hljs-number">80.82</span> <span class="hljs-number">83.40</span> <span class="hljs-number">84.80</span> <span class="hljs-number">86.62</span> <span class="hljs-number">88.70</span> <span class="hljs-number">92.10</span> <span class="hljs-number">94.20</span> <span class="hljs-number">98.20</span>];<br><span class="hljs-built_in">plot</span>(C,D,<span class="hljs-string">&#x27;b*&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>a = <span class="hljs-built_in">linspace</span>(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>);<span class="hljs-comment">%曲线化</span><br>b = spline(C,D,a);<br><span class="hljs-comment">%plot(a,b,&#x27;b&#x27;);</span><br><span class="hljs-built_in">hold</span> on;<br><br>x=<span class="hljs-number">0</span>:<span class="hljs-number">1</span>:<span class="hljs-number">100</span>;<br>y1=<span class="hljs-number">0.00065</span>.*x.*x+<span class="hljs-number">0.1</span>.*x+<span class="hljs-number">82</span>;<br>y2=<span class="hljs-number">-0.00082</span>.*x.*x+<span class="hljs-number">0.24</span>.*x+<span class="hljs-number">82</span>;<br><span class="hljs-built_in">plot</span>(x,y1);<br><span class="hljs-built_in">plot</span>(x,y2);<br><br>aa = <span class="hljs-number">510</span>;<br>bb = <span class="hljs-number">0.324</span>;<br><span class="hljs-comment">%plot(aa,bb,&#x27;ro&#x27;);</span><br>axis([<span class="hljs-number">0</span>,<span class="hljs-number">100</span>,<span class="hljs-number">70</span>,<span class="hljs-number">100</span>]);<br>xlabel(<span class="hljs-string">&#x27;丙醇质量分数/%&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;沸点/℃&#x27;</span>);<br><span class="hljs-comment">%title(&#x27;ln(P/Pa)-1/T图&#x27;);</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/RK65hbxAZkFyGW4.png" srcset="/img/loading.gif" lazyload alt="fg2" /></p>
+<h2 id="6恒温槽"><a class="markdownIt-Anchor" href="#6恒温槽"></a> 6.恒温槽</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">A = <span class="hljs-number">0.5</span>:<span class="hljs-number">0.5</span>:<span class="hljs-number">14</span>;<br>B = [<span class="hljs-number">39.97</span>	<span class="hljs-number">40.21</span>	<span class="hljs-number">40.20</span>	<span class="hljs-number">40.16</span>	<span class="hljs-number">40.11</span>	<span class="hljs-number">40.08</span>	<span class="hljs-number">40.03</span>	<span class="hljs-number">40</span>	<span class="hljs-number">39.96</span>	<span class="hljs-number">39.92</span>	<span class="hljs-number">39.89</span>	<span class="hljs-number">39.85</span>	<span class="hljs-number">39.81</span>	<span class="hljs-number">39.83</span>	<span class="hljs-number">40.18</span>	<span class="hljs-number">40.22</span>	<span class="hljs-number">40.19</span>	<span class="hljs-number">40.15</span>	<span class="hljs-number">40.1</span>	<span class="hljs-number">40.07</span>	<span class="hljs-number">40.03</span>	<span class="hljs-number">39.99</span>	<span class="hljs-number">39.96</span>	<span class="hljs-number">39.92</span>	<span class="hljs-number">39.88</span>	<span class="hljs-number">39.84</span>	<span class="hljs-number">39.8</span>	<span class="hljs-number">39.91</span><br>];<br><span class="hljs-built_in">plot</span>(A,B,<span class="hljs-string">&#x27;bs&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>a1 = <span class="hljs-built_in">linspace</span>(<span class="hljs-number">0.5</span>,<span class="hljs-number">14.5</span>);<span class="hljs-comment">%曲线化</span><br>b1 = spline(A,B,a1);<br><span class="hljs-comment">%plot(a1,b1,&#x27;b&#x27;);</span><br><span class="hljs-comment">%hold on;</span><br>axis([<span class="hljs-number">0</span>,<span class="hljs-number">15</span>,<span class="hljs-number">39</span>,<span class="hljs-number">40.5</span>]);<br><br>C = <span class="hljs-number">0.5</span>:<span class="hljs-number">0.5</span>:<span class="hljs-number">12</span>;<br>D = [<span class="hljs-number">40.16</span>	<span class="hljs-number">40.11</span>	<span class="hljs-number">40.08</span>	<span class="hljs-number">40.03</span>	<span class="hljs-number">40</span>	<span class="hljs-number">39.97</span>	<span class="hljs-number">39.93</span>	<span class="hljs-number">39.89</span>	<span class="hljs-number">39.85</span>	<span class="hljs-number">39.81</span>	<span class="hljs-number">39.78</span>	<span class="hljs-number">40.04</span>	<span class="hljs-number">40.03</span>	<span class="hljs-number">40</span>	<span class="hljs-number">39.97</span>	<span class="hljs-number">39.93</span>	<span class="hljs-number">39.89</span>	<span class="hljs-number">39.85</span>	<span class="hljs-number">39.82</span>	<span class="hljs-number">39.78</span>	<span class="hljs-number">40.03</span>	<span class="hljs-number">40.02</span>	<span class="hljs-number">39.97</span>	<span class="hljs-number">39.94</span><br>];<br><span class="hljs-built_in">plot</span>(C,D,<span class="hljs-string">&#x27;b*&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(a1,b1,<span class="hljs-string">&#x27;b&#x27;</span>);<span class="hljs-comment">%为了使用legend，把第一条曲线的平滑化调整到这个位置</span><br><span class="hljs-built_in">hold</span> on;<br>a2 = <span class="hljs-built_in">linspace</span>(<span class="hljs-number">0.5</span>,<span class="hljs-number">12</span>);<span class="hljs-comment">%曲线化</span><br>b2 = spline(C,D,a2);<br><span class="hljs-built_in">plot</span>(a2,b2,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>axis([<span class="hljs-number">0</span>,<span class="hljs-number">15</span>,<span class="hljs-number">39</span>,<span class="hljs-number">40.5</span>]);<br><br>xlabel(<span class="hljs-string">&#x27;时间/min&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;温度/℃&#x27;</span>);<br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;220V&#x27;</span>,<span class="hljs-string">&#x27;110V&#x27;</span>);<span class="hljs-comment">%按顺序给出图注</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/10/10/FqmtXv1ekIL6Ji4.png" srcset="/img/loading.gif" lazyload alt="fig1" /></p>
+<h2 id="7matlab几种函数拟合的办法"><a class="markdownIt-Anchor" href="#7matlab几种函数拟合的办法"></a> 7.MATLAB几种函数拟合的办法</h2>
+<h3 id="1线性拟合"><a class="markdownIt-Anchor" href="#1线性拟合"></a> 1.线性拟合</h3>
+<p>因为最近在各种实验报告中比较常用的就是这种线性拟合，所以尝试了几种方法</p>
+<p>无论是cftool工具箱还是figure工具里的基本拟合，都具有多种拟合，这里提供一个只针对线性拟合的代码方式</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[k,b]</span>=<span class="hljs-title">linefit</span><span class="hljs-params">(x,y)</span></span><br>n=<span class="hljs-built_in">length</span>(x);<span class="hljs-comment">%获取x数组元素个数</span><br>x=<span class="hljs-built_in">reshape</span>(x,n,<span class="hljs-number">1</span>);<span class="hljs-comment">%把x转置为n行一列的矩阵</span><br>y=<span class="hljs-built_in">reshape</span>(y,n,<span class="hljs-number">1</span>);<span class="hljs-comment">%把y转置为n行一列的矩阵</span><br>A=[x,<span class="hljs-built_in">ones</span>(n,<span class="hljs-number">1</span>)];<span class="hljs-comment">%将x与同行数的列向量合并为一个n行2列的矩阵</span><br>bb=y;<br>B=A&#x27;*A;<span class="hljs-comment">%得到一个二行二列方阵</span><br>bb=A&#x27;*bb;<br>yy=B\bb;<br>k=yy(<span class="hljs-number">1</span>);<br>b=yy(<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+<p>这个拟合的方式归根结底是直接求加权，通过矩阵运算我们可以得出结果</p>
+<p><img src="https://i.loli.net/2020/09/26/E4MBmAe3VOqIRZf.png" srcset="/img/loading.gif" lazyload alt="img" /></p>
+<h3 id="2使用cftool命令进行拟合工具箱处理多种拟合"><a class="markdownIt-Anchor" href="#2使用cftool命令进行拟合工具箱处理多种拟合"></a> 2.使用cftool命令进行拟合工具箱处理（多种拟合）</h3>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt;cftool<span class="hljs-comment">%打开拟合工具箱</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/09/26/rWod7pgElmSzvkq.png" srcset="/img/loading.gif" lazyload alt="image-20200926122543733" /></p>
+<h3 id="3使用figure工具栏的拟合选项常用拟合"><a class="markdownIt-Anchor" href="#3使用figure工具栏的拟合选项常用拟合"></a> 3.使用figure工具栏的拟合选项（常用拟合）</h3>
+<p>如图所示</p>
+<img src="https://i.loli.net/2020/09/26/YidEXxLcqWFsD6j.png" srcset="/img/loading.gif" lazyload alt="image-20200926122118920" style="zoom:67%;" />
+<img src="https://i.loli.net/2020/09/26/da9tgOyGbuJqkRX.png" srcset="/img/loading.gif" lazyload alt="image-20200926122440849" style="zoom: 67%;" />
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Matlab/">Matlab</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Matlab%E5%9F%BA%E7%A1%80/">Matlab基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BB%98%E5%9B%BE/">绘图</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/10/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85Linux/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在Windows环境下安装Linux虚拟机</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/11/Matlab%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">Matlab基础手册</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

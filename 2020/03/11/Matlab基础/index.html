@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/gou.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dcode">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文主要介绍Matlab中的基础用法，方便日后需要简单使用Matlab时的快速入门与回顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab基础手册">
+<meta property="og:url" content="http://example.com/2020/03/11/Matlab%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Dcode的技术博客">
+<meta property="og:description" content="本文主要介绍Matlab中的基础用法，方便日后需要简单使用Matlab时的快速入门与回顾">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/THmVZb7YNqk4ghC.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/LVIUj8MfZJShH4w.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/Wny3q1jbaX5JeIg.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/MHlX4pRmKkgN81E.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/fbyGS7jWqHJ9aMN.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/MekIHs4KbwJEFZj.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/KVADhTJvx57boSt.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/siP7CtTKBwbnfye.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/k9UH2XqO8ocgGFm.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/uQCjimoKH8E3seW.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/HfUonKQYB8qv4FT.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/25/pV1ctgwMjABd26X.png">
+<meta property="article:published_time" content="2020-03-11T05:21:16.000Z">
+<meta property="article:modified_time" content="2022-02-08T07:04:59.662Z">
+<meta property="article:author" content="Dcode">
+<meta property="article:tag" content="Matlab基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/25/THmVZb7YNqk4ghC.png">
+  
+  
+  <title>Matlab基础手册 - Dcode的技术博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dcode的技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg3.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Matlab基础手册">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-11 13:21" pubdate>
+        2020年3月11日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      83 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Matlab基础手册</h1>
+            
+            <div class="markdown-body">
+              <h2 id="1图形界面使用"><a class="markdownIt-Anchor" href="#1图形界面使用"></a> 1.图形界面使用</h2>
+<h3 id="11-系统环境"><a class="markdownIt-Anchor" href="#11-系统环境"></a> 1.1 系统环境</h3>
+<p>与office很相似的界面，用功能区取代了传统的菜单式界面</p>
+<h3 id="12主窗口"><a class="markdownIt-Anchor" href="#12主窗口"></a> 1.2主窗口：</h3>
+<p>嵌入功能，功能区，工具条</p>
+<h3 id="13命令行窗口"><a class="markdownIt-Anchor" href="#13命令行窗口"></a> 1.3命令行窗口：</h3>
+<p>解释性，一个语句一个结果，和python命令行一样</p>
+<p>如果需要输入多行命令再统一执行，在行末尾加上3个小数点&quot;…&quot;即可</p>
+<p>称之为续航符</p>
+<p>如果不想立即在命令行窗口中输出结果，可以在命令后加上分号&quot; ; &quot;</p>
+<h3 id="14如何设置当前文件夹"><a class="markdownIt-Anchor" href="#14如何设置当前文件夹"></a> 1.4如何设置当前文件夹？</h3>
+<p>（1）在当前文件夹工具栏或者当前文件夹窗口中选择某个文件夹当做当前文件夹</p>
+<p>（2）使用cd命令</p>
+<p>举个例子：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; cd e:\work<br></code></pre></td></tr></table></figure>
+<p>就自动在E盘中取work文件夹为当前文件夹，后面的操作都在这个文件夹了，但是<strong>work必须是提前建立好的存在的文件夹</strong></p>
+<h3 id="15工作区窗口"><a class="markdownIt-Anchor" href="#15工作区窗口"></a> 1.5工作区窗口</h3>
+<p>工作区可以编辑、保存变量</p>
+<h3 id="16搜索路径"><a class="markdownIt-Anchor" href="#16搜索路径"></a> 1.6搜索路径</h3>
+<p>一般我们输入命令行后，MATLAB会按照顺序检测变量</p>
+<p>顺序为：<strong>变量&gt;内部函数&gt;程序文件</strong></p>
+<p>而程序文件的搜索顺序是：当前文件夹中搜索&gt;文件搜索路径文件夹中的程序文件</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt;clear<br>&gt;&gt;<span class="hljs-built_in">sin</span>=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br>&gt;&gt;x=<span class="hljs-built_in">sin</span>(<span class="hljs-number">1</span>)<br>x=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>可见，Matlab没有调用内部函数sin，而是用了变量sin，这就是搜索顺序带来的影响，只有在工作区删去自己的sin函数，才能正常使用系统的sin函数</p>
+<p>一般尽量避免这样设置变量名</p>
+<h3 id="17如何设置文件搜索路径"><a class="markdownIt-Anchor" href="#17如何设置文件搜索路径"></a> 1.7如何设置文件搜索路径</h3>
+<p>（1）用path命令</p>
+<p>例如</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt;path(path,<span class="hljs-string">&#x27;e:\work&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>(2)用对话框设置</p>
+<p>主页 &gt; “环境变量组”中的“设置路径 &gt; 设置自己的路径</p>
+<p>这样的话MATLAB就能够搜索到用户自己的文件夹下的文件了，而不是只局限于当前文件夹，这避免了要把所有文件都复制到当前文件夹的麻烦操作</p>
+<blockquote>
+<p>问题1：如果在当前文件夹和搜索路径文件夹下建立了一个同名的m文件，那么在命令行窗口输入文件名时执行哪个文件？Answer：优先当前，再搜索路径，所以选当前</p>
+</blockquote>
+<blockquote>
+<p>问题2：如果用户建立的文件既没有保存在当前文件夹下，也没有保存在文件搜索路径中，那么命令行窗口输入文件名时会出现什么信息？Answer：找不到，会报错</p>
+</blockquote>
+<h2 id="2数据类型"><a class="markdownIt-Anchor" href="#2数据类型"></a> 2.数据类型</h2>
+<h3 id="21数值数据类型的分类"><a class="markdownIt-Anchor" href="#21数值数据类型的分类"></a> 2.1数值数据类型的分类：</h3>
+<ul>
+<li>整型</li>
+</ul>
+<p>uint8函数将数值数据转换为无符号8位整数，int8函数将数值数据转换为带符号的8位整数</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; x=int8(<span class="hljs-number">129</span>)<br>x = <br>   <span class="hljs-number">127</span>  <span class="hljs-comment">%越界了，有符号的最多到127</span><br>&gt;&gt; x=uint8(<span class="hljs-number">129</span>)<br>x = <br>   <span class="hljs-number">129</span>  <span class="hljs-comment">%没越界，无符号的最多到255</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>浮点型</li>
+</ul>
+<p>单精度型实数在内存中占用4个字节，而双精度型实数在内存中占用8个字节，所以说呢？双精度型的数据精度更高。</p>
+<p><strong>数值数据类型默认是双精度型</strong></p>
+<p>可以使用single函数将其他类型的数据转化为单精度类型</p>
+<ul>
+<li>复数型
+<ul>
+<li>实数+ni或者nj，<strong>前提是i和j没有被定义成变量</strong></li>
+<li>real函数：求复数的实部</li>
+<li>image函数：求复数的虚部</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; <span class="hljs-number">6</span>+<span class="hljs-number">5</span><span class="hljs-built_in">i</span><br><span class="hljs-built_in">ans</span> = <br>  <span class="hljs-number">6.0000</span>+<span class="hljs-number">5.0000</span><span class="hljs-built_in">i</span><br>&gt;&gt; <span class="hljs-number">6</span>+<span class="hljs-number">5</span><span class="hljs-built_in">j</span><br><span class="hljs-built_in">ans</span> = <br>  <span class="hljs-number">6.0000</span>+<span class="hljs-number">5.0000</span><span class="hljs-built_in">j</span><br></code></pre></td></tr></table></figure>
+<h3 id="22数值数据的输出格式"><a class="markdownIt-Anchor" href="#22数值数据的输出格式"></a> 2.2数值数据的输出格式</h3>
+<ul>
+<li>format命令的格式：format格式符，决定了数据的输出格式，但不影响数据计算和存储</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt;format long;<br>&gt;&gt;<span class="hljs-number">50</span>/<span class="hljs-number">3</span><br><span class="hljs-built_in">ans</span> = <br>  <span class="hljs-number">16.666666666666666</span> <span class="hljs-comment">%输出了15位</span><br>&gt;&gt;format;<br>&gt;&gt;<span class="hljs-number">50</span>/<span class="hljs-number">3</span><br><span class="hljs-built_in">ans</span> = <br><span class="hljs-number">16.6667</span> <span class="hljs-comment">%又回到了默认的输出格式short</span><br></code></pre></td></tr></table></figure>
+<h3 id="23常用数学函数"><a class="markdownIt-Anchor" href="#23常用数学函数"></a> 2.3常用数学函数</h3>
+<p>（1）函数调用格式：<strong>函数名（函数自变量的值）</strong></p>
+<p>函数的自变量规定为矩阵变量，当然也可以是标量，因为标量本身就是矩阵的一种特例。</p>
+<p>函数在运算时是将函数<strong>逐项作用于矩阵的每个元素上</strong>，所以最后运算的结果就是一个与自变量同型的矩阵。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt;A=[<span class="hljs-number">4</span>,<span class="hljs-number">2</span>;<span class="hljs-number">3</span>,<span class="hljs-number">6</span>]<br>A =<br>   <span class="hljs-number">4</span>  <span class="hljs-number">2</span><br>   <span class="hljs-number">3</span>  <span class="hljs-number">6</span><br>&gt;&gt;B=<span class="hljs-built_in">exp</span>(A)<br>B = <br>   <span class="hljs-number">54.5982</span>    <span class="hljs-number">7.3891</span><br>   <span class="hljs-number">20.0855</span>  <span class="hljs-number">403.4288</span><br></code></pre></td></tr></table></figure>
+<p>（2）三角函数</p>
+<p>三角函数分为以弧度为单位的函数和一角度为单位的函数，如果是以角度为单位的函数，就要在函数名后面加上小写字母d</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; <span class="hljs-built_in">sin</span>(<span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>)<br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">1</span><br>&gt;&gt; <span class="hljs-built_in">sind</span>(<span class="hljs-number">90</span>)<br><span class="hljs-built_in">ans</span> =<br>   <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>（3）绝对值函数abs</p>
+<p>可以用来求：实数的绝对值、复数的模、字符串的ASCII码值</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; <span class="hljs-built_in">abs</span>(<span class="hljs-number">-4</span>)<br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">4</span><br>&gt;&gt; <span class="hljs-built_in">abs</span>(<span class="hljs-number">3</span>+<span class="hljs-number">4</span><span class="hljs-built_in">i</span>)<br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">5</span><br>&gt;&gt;<span class="hljs-built_in">abs</span>(<span class="hljs-string">&#x27;a&#x27;</span>)<br><span class="hljs-built_in">ans</span> =<br>   <span class="hljs-number">97</span><br></code></pre></td></tr></table></figure>
+<p>（4）取整函数</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; <span class="hljs-built_in">fix</span>（<span class="hljs-number">-3.2</span>）<br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">-3</span>   <span class="hljs-comment">%fix是取更靠近0的那个数字</span><br>&gt;&gt; <span class="hljs-built_in">round</span>(<span class="hljs-number">4.7</span>)<br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">5</span>    <span class="hljs-comment">%round是四舍五入的意思</span><br>&gt;&gt; <span class="hljs-built_in">floor</span>(<span class="hljs-number">3.6</span>)<br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">3</span>    <span class="hljs-comment">%floor是地板的意思，向小取整</span><br>&gt;&gt; <span class="hljs-built_in">ceil</span>(<span class="hljs-number">-3.8</span>)<br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">-3</span>   <span class="hljs-comment">%ceil是天花板的意思，向大取整</span><br></code></pre></td></tr></table></figure>
+<p>（5）求余</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; m=<span class="hljs-number">345</span>;<br>&gt;&gt; m1=<span class="hljs-built_in">rem</span>(m,<span class="hljs-number">10</span>)<br>m1 = <br>  <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+<p>（6）求1~100之间的素数</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt;x=<span class="hljs-number">1</span>:<span class="hljs-number">100</span>;    <span class="hljs-comment">%生成1-100之间的整数列</span><br>&gt;&gt;k=<span class="hljs-built_in">isprime</span>(x);    <br><span class="hljs-comment">%调用isprime函数生成k向量，k向量元素只取1&amp;0,1代表是素数</span><br>&gt;&gt;k1=<span class="hljs-built_in">find</span>(k);<br><span class="hljs-comment">%调用find函数生成k1向量，其元素为k向量中非零元素的序号</span><br>&gt;&gt;p = x(k1)<br>p =<br><br>  <span class="hljs-number">1</span> 至 <span class="hljs-number">8</span> 列<br><br>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">5</span>     <span class="hljs-number">7</span>    <span class="hljs-number">11</span>    <span class="hljs-number">13</span>    <span class="hljs-number">17</span>    <span class="hljs-number">19</span><br><br>  <span class="hljs-number">9</span> 至 <span class="hljs-number">16</span> 列<br><br>    <span class="hljs-number">23</span>    <span class="hljs-number">29</span>    <span class="hljs-number">31</span>    <span class="hljs-number">37</span>    <span class="hljs-number">41</span>    <span class="hljs-number">43</span>    <span class="hljs-number">47</span>    <span class="hljs-number">53</span><br><br>  <span class="hljs-number">17</span> 至 <span class="hljs-number">24</span> 列<br><br>    <span class="hljs-number">59</span>    <span class="hljs-number">61</span>    <span class="hljs-number">67</span>    <span class="hljs-number">71</span>    <span class="hljs-number">73</span>    <span class="hljs-number">79</span>    <span class="hljs-number">83</span>    <span class="hljs-number">89</span><br><br>  <span class="hljs-number">25</span> 列<br><br>    <span class="hljs-number">97</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="3变量"><a class="markdownIt-Anchor" href="#3变量"></a> 3.变量</h2>
+<h3 id="31变量与命名规则"><a class="markdownIt-Anchor" href="#31变量与命名规则"></a> 3.1变量与命名规则</h3>
+<p>变量从本质上讲是内存单元的一个抽象。通过给变量取名字，我们就能查找到内存单元所在。</p>
+<p>规则：</p>
+<p>（1）字母开头后接字母数字或者下划线，最多只能63个字符。</p>
+<p>（2）MATLAB区分大小写，一般用小写</p>
+<h3 id="32赋值"><a class="markdownIt-Anchor" href="#32赋值"></a> 3.2赋值</h3>
+<p>（1）把表达式的值赋值给指定变量</p>
+<p>（2）直接写表达式就默认付给MATLAB内部预先定义好的变量ans</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; x=<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">7</span>)<span class="hljs-number">-2</span><span class="hljs-built_in">i</span>;    <span class="hljs-comment">%pi和i都是MATLAB自己预先定义好的变量</span><br>&gt;&gt; y=<span class="hljs-built_in">exp</span>(<span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>);<br>&gt;&gt; z=(<span class="hljs-number">5</span>+<span class="hljs-built_in">cosd</span>(<span class="hljs-number">47</span>))/(<span class="hljs-number">1</span>+<span class="hljs-built_in">abs</span>(x-y))<br><br>z =<br><br>    <span class="hljs-number">1.4395</span><br></code></pre></td></tr></table></figure>
+<h3 id="33预定义变量"><a class="markdownIt-Anchor" href="#33预定义变量"></a> 3.3预定义变量</h3>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-built_in">ans</span>     <span class="hljs-comment">%默认赋值变量</span><br><span class="hljs-built_in">i</span>和<span class="hljs-built_in">j</span>    <span class="hljs-comment">%虚数单位</span><br><span class="hljs-built_in">pi</span>      <span class="hljs-comment">%代表圆周率</span><br>NaN     <br><span class="hljs-comment">%代表非数，比如在画图的时候，想要裁掉一部分，就把要裁掉部分的坐标数据给设为NaN就可以了</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="34管理变量"><a class="markdownIt-Anchor" href="#34管理变量"></a> 3.4管理变量</h3>
+<p>（1）在工作区窗口中完成对内存变量的删除和修改（右键）</p>
+<p>（2）who和whos</p>
+<p>主要用于显示已经驻留的变量名清单，后者不仅给出变量名称，还给出它们的大小，所占字节数以及数据类型等信息</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; whos<br>  Name      Size             Bytes  Class      Attributes<br><br>  k         <span class="hljs-number">1</span>x100              <span class="hljs-number">100</span>  logical              <br>  k1        <span class="hljs-number">1</span>x25               <span class="hljs-number">200</span>  double               <br>  p         <span class="hljs-number">1</span>x25               <span class="hljs-number">200</span>  double               <br>  x         <span class="hljs-number">1</span>x1                 <span class="hljs-number">16</span>  double     <span class="hljs-built_in">complex</span>   <br>  y         <span class="hljs-number">1</span>x1                  <span class="hljs-number">8</span>  double               <br>  z         <span class="hljs-number">1</span>x1                  <span class="hljs-number">8</span>  double               <br></code></pre></td></tr></table></figure>
+<p>（3）内存变量文件</p>
+<p>是指用于保存MATLAB工作区变量的文件，其扩展名  为.mat，也叫MAT文件</p>
+<p>是MATLAB保存。数据的一个标准的二进制格式文件</p>
+<p>如图所示的指令就可以把变量a和x保存在mydata.mat文件中</p>
+<p>下次使用的时候，如果需要这次的这两个变量，就可以把刚才的mydata.mat文件装入工作空间，这两个变量就会变成已知变量</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; save mydata a x<br>&gt;&gt; load mydata    <span class="hljs-comment">%完成了把上次工作保存的a和x导入工作空间的操作</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; save mydata x y z  <span class="hljs-comment">%实验实例</span><br>&gt;&gt; clear<br>&gt;&gt; x<br>未定义函数或变量 <span class="hljs-string">&#x27;x&#x27;</span>。<br> <br>&gt;&gt; load mydata<br>&gt;&gt; x<br><br>x =<br><br>   <span class="hljs-number">2.6458</span> - <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span><br></code></pre></td></tr></table></figure>
+<h3 id="35讨论题"><a class="markdownIt-Anchor" href="#35讨论题"></a> 3.5讨论题</h3>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; <span class="hljs-built_in">ans</span>=<span class="hljs-number">5</span>;<br>&gt;&gt; <span class="hljs-number">10</span>;<br>&gt;&gt; <span class="hljs-built_in">ans</span>+<span class="hljs-number">10</span><br><span class="hljs-built_in">ans</span> = <br>   <span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
+<h2 id="4矩阵"><a class="markdownIt-Anchor" href="#4矩阵"></a> 4.矩阵</h2>
+<h3 id="41矩阵建立"><a class="markdownIt-Anchor" href="#41矩阵建立"></a> 4.1矩阵建立</h3>
+<p>（1）直接输入法</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>;<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br><br>A =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span><br>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span>     <span class="hljs-number">6</span><br>     <span class="hljs-number">7</span>     <span class="hljs-number">8</span>     <span class="hljs-number">9</span><br><br></code></pre></td></tr></table></figure>
+<p>（2）以小扩大</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>;<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];<br>&gt;&gt; B=[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>;<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>];<br>&gt;&gt; C=[A,B;B,A]<br><br>C =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span><br>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span>     <span class="hljs-number">6</span>     <span class="hljs-number">2</span>     <span class="hljs-number">2</span>     <span class="hljs-number">2</span><br>     <span class="hljs-number">7</span>     <span class="hljs-number">8</span>     <span class="hljs-number">9</span>     <span class="hljs-number">3</span>     <span class="hljs-number">3</span>     <span class="hljs-number">3</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span><br>     <span class="hljs-number">2</span>     <span class="hljs-number">2</span>     <span class="hljs-number">2</span>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span>     <span class="hljs-number">6</span><br>     <span class="hljs-number">3</span>     <span class="hljs-number">3</span>     <span class="hljs-number">3</span>     <span class="hljs-number">7</span>     <span class="hljs-number">8</span>     <span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
+<p>（3）复数矩阵</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>;<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];<br>&gt;&gt; B=[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>;<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>];<br>&gt;&gt; C=A+B*<span class="hljs-built_in">i</span><br><br>C =<br><br>  <span class="hljs-number">1</span> 至 <span class="hljs-number">2</span> 列<br><br>   <span class="hljs-number">1.0000</span> + <span class="hljs-number">1.0000</span><span class="hljs-built_in">i</span>   <span class="hljs-number">2.0000</span> + <span class="hljs-number">1.0000</span><span class="hljs-built_in">i</span><br>   <span class="hljs-number">4.0000</span> + <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span>   <span class="hljs-number">5.0000</span> + <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span><br>   <span class="hljs-number">7.0000</span> + <span class="hljs-number">3.0000</span><span class="hljs-built_in">i</span>   <span class="hljs-number">8.0000</span> + <span class="hljs-number">3.0000</span><span class="hljs-built_in">i</span><br><br>  <span class="hljs-number">3</span> 列<br><br>   <span class="hljs-number">3.0000</span> + <span class="hljs-number">1.0000</span><span class="hljs-built_in">i</span><br>   <span class="hljs-number">6.0000</span> + <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span><br>   <span class="hljs-number">9.0000</span> + <span class="hljs-number">3.0000</span><span class="hljs-built_in">i</span><br></code></pre></td></tr></table></figure>
+<p>（4）冒号表达式（产生的是行向量）</p>
+<img src="https://i.loli.net/2020/08/25/THmVZb7YNqk4ghC.png" srcset="/img/loading.gif" lazyload alt="image-20200622112802145" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; t=<span class="hljs-number">0</span>:<span class="hljs-number">1</span>:<span class="hljs-number">5</span>     <span class="hljs-comment">%最终生成6个元素的行向量</span><br><br>t =<br><br>     <span class="hljs-number">0</span>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span><br>     <br><span class="hljs-comment">%如果省略步长就表示默认步长为1</span><br><br>&gt;&gt; t=<span class="hljs-number">0</span>:<span class="hljs-number">5</span><br><br>t =<br><br>     <span class="hljs-number">0</span>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+<p>（5）linspace函数</p>
+<img src="https://i.loli.net/2020/08/25/LVIUj8MfZJShH4w.png" srcset="/img/loading.gif" lazyload alt="image-20200622113528803" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; x=<span class="hljs-built_in">linspace</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">pi</span>,<span class="hljs-number">6</span>)    <span class="hljs-comment">%最终生成6个元素的行向量</span><br><br>x =<br><br>  <span class="hljs-number">1</span> 至 <span class="hljs-number">5</span> 列<br><br>         <span class="hljs-number">0</span>    <span class="hljs-number">0.6283</span>    <span class="hljs-number">1.2566</span>    <span class="hljs-number">1.8850</span>    <span class="hljs-number">2.5133</span><br><br>  <span class="hljs-number">6</span> 列<br><br>    <span class="hljs-number">3.1416</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="42结构矩阵和单元矩阵"><a class="markdownIt-Anchor" href="#42结构矩阵和单元矩阵"></a> 4.2结构矩阵和单元矩阵</h3>
+<p>结构矩阵的各个元素之下还有相应的成员，并且是不同的数据类型。</p>
+<img src="https://i.loli.net/2020/08/25/Wny3q1jbaX5JeIg.png" srcset="/img/loading.gif" lazyload alt="image-20200622113802951" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; a(<span class="hljs-number">1</span>).x1=<span class="hljs-number">10</span>;a(<span class="hljs-number">1</span>).x2=<span class="hljs-string">&#x27;liu&#x27;</span>;a(<span class="hljs-number">1</span>).x3=[<span class="hljs-number">11</span>,<span class="hljs-number">21</span>;<span class="hljs-number">34</span>,<span class="hljs-number">78</span>];<br>&gt;&gt; a(<span class="hljs-number">2</span>).x1=<span class="hljs-number">12</span>;a(<span class="hljs-number">2</span>).x2=<span class="hljs-string">&#x27;wang&#x27;</span>;a(<span class="hljs-number">2</span>).x3=[<span class="hljs-number">34</span>,<span class="hljs-number">191</span>;<span class="hljs-number">27</span>,<span class="hljs-number">578</span>];<br>&gt;&gt; a(<span class="hljs-number">3</span>).x1=<span class="hljs-number">14</span>;a(<span class="hljs-number">3</span>).x2=<span class="hljs-string">&#x27;cai&#x27;</span>;a(<span class="hljs-number">3</span>).x3=[<span class="hljs-number">13</span>,<span class="hljs-number">890</span>;<span class="hljs-number">67</span>,<span class="hljs-number">231</span>]<br><br>a = <br><br>  包含以下字段的 <span class="hljs-number">1</span>×<span class="hljs-number">3</span> struct 数组:    <span class="hljs-comment">%结构数组的意思</span><br><br>    x1<br>    x2<br>    x3<br></code></pre></td></tr></table></figure>
+<img src="https://i.loli.net/2020/08/25/MHlX4pRmKkgN81E.png" srcset="/img/loading.gif" lazyload alt="image-20200622114426866" style="zoom:80%;" />
+<p>而单元矩阵的元素就是不同类型的数据，用大括号</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; b=&#123;<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;liu&#x27;</span>,[<span class="hljs-number">11</span>,<span class="hljs-number">21</span>;<span class="hljs-number">34</span>,<span class="hljs-number">78</span>];<span class="hljs-number">12</span>,<span class="hljs-string">&#x27;wang&#x27;</span>,[<span class="hljs-number">34</span>,<span class="hljs-number">191</span>;<span class="hljs-number">27</span>,<span class="hljs-number">578</span>];...<br><span class="hljs-number">14</span>,<span class="hljs-string">&#x27;cai&#x27;</span>,[<span class="hljs-number">13</span>,<span class="hljs-number">890</span>;<span class="hljs-number">67</span>,<span class="hljs-number">231</span>]&#125;<br><br>b =<br><br>  <span class="hljs-number">3</span>×<span class="hljs-number">3</span> cell 数组    <span class="hljs-comment">%元胞数组的意思</span><br><br>    &#123;[<span class="hljs-number">10</span>]&#125;    &#123;<span class="hljs-string">&#x27;liu&#x27;</span> &#125;    &#123;<span class="hljs-number">2</span>×<span class="hljs-number">2</span> double&#125;<br>    &#123;[<span class="hljs-number">12</span>]&#125;    &#123;<span class="hljs-string">&#x27;wang&#x27;</span>&#125;    &#123;<span class="hljs-number">2</span>×<span class="hljs-number">2</span> double&#125;<br>    &#123;[<span class="hljs-number">14</span>]&#125;    &#123;<span class="hljs-string">&#x27;cai&#x27;</span> &#125;    &#123;<span class="hljs-number">2</span>×<span class="hljs-number">2</span> double&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="43矩阵的引用"><a class="markdownIt-Anchor" href="#43矩阵的引用"></a> 4.3矩阵的引用</h3>
+<h4 id="431通过下标来引用矩阵的元素"><a class="markdownIt-Anchor" href="#431通过下标来引用矩阵的元素"></a> 4.3.1通过下标来引用矩阵的元素</h4>
+<p>比如A(3,2)表示A矩阵第三行第二列的元素,可以直接赋值</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>];<br>&gt;&gt; A(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)=<span class="hljs-number">10</span>       <span class="hljs-comment">%超出矩阵范围，自动扩展矩阵</span><br><br>A =    <span class="hljs-comment">%变成了四行五列</span><br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span><br>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span>     <span class="hljs-number">6</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span><br>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span><br>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span>    <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+<h4 id="432通过序号来引用"><a class="markdownIt-Anchor" href="#432通过序号来引用"></a> 4.3.2通过序号来引用</h4>
+<p>在MATLAB中，矩阵元素按列存储，首先存储矩阵的第一列元素，然后存储第二列元素，一直到矩阵的最后一列元素</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]<br><br>A =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span><br>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span>     <span class="hljs-number">6</span><br><br>&gt;&gt; A(<span class="hljs-number">3</span>)    <span class="hljs-comment">%序号为3的元素是2</span><br><br><span class="hljs-built_in">ans</span> =<br><br>     <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<p>矩阵元素的序号与下标可以利用<code>sub2ind</code>和<code>ind2sub</code>函数实现相互转换。</p>
+<img src="https://i.loli.net/2020/08/25/fbyGS7jWqHJ9aMN.png" srcset="/img/loading.gif" lazyload alt="image-20200622121537749" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; A=[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>;<span class="hljs-number">4</span>:<span class="hljs-number">6</span>]<br><br>A =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span><br>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span>     <span class="hljs-number">6</span><br>     <br>&gt;&gt; D=<span class="hljs-built_in">sub2ind</span>(<span class="hljs-built_in">size</span>(A),[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;<span class="hljs-number">3</span>,<span class="hljs-number">2</span>])<br><span class="hljs-comment">%功能分别是：</span><br><span class="hljs-comment">% size：获取A的大小（几行几列），并生成一个行向量</span><br><span class="hljs-comment">% I与J一一对应作为元素的下标去查找对应的元素，并把元素对应的序号值存入D中</span><br><span class="hljs-comment">% D收集到了序号值，生成行向量组矩阵（也就是横着展示出来）</span><br><span class="hljs-comment">% 举例：A的第一行的第一列是元素1，对应序号1，存入D中为1</span><br><span class="hljs-comment">%      A的第二行的第一列是元素4，对应序号为2，存入D中为2，以此类推</span><br><br>D =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span><br>     <span class="hljs-number">6</span>     <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
+<img src="https://i.loli.net/2020/08/25/MekIHs4KbwJEFZj.png" srcset="/img/loading.gif" lazyload alt="image-20200622122847947" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; [I,J]=<span class="hljs-built_in">ind2sub</span>([<span class="hljs-number">3</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>]) <br><span class="hljs-comment">%意思是去查找一个3行3列的矩阵中序号为1、3、5的元素对应的角标，并把行数存入I中列数存入J中</span><br><br>I =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">3</span>     <span class="hljs-number">2</span><br><br><br>J =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span><br><br></code></pre></td></tr></table></figure>
+<h4 id="433利用冒号表达式获得子矩阵"><a class="markdownIt-Anchor" href="#433利用冒号表达式获得子矩阵"></a> 4.3.3利用冒号表达式获得子矩阵</h4>
+<img src="https://i.loli.net/2020/08/25/KVADhTJvx57boSt.png" srcset="/img/loading.gif" lazyload alt="image-20200622123430969" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>;<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>;,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">13</span>,<span class="hljs-number">14</span>,<span class="hljs-number">15</span>]<br><br>A =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span><br>     <span class="hljs-number">6</span>     <span class="hljs-number">7</span>     <span class="hljs-number">8</span>     <span class="hljs-number">9</span>    <span class="hljs-number">10</span><br>    <span class="hljs-number">11</span>    <span class="hljs-number">12</span>    <span class="hljs-number">13</span>    <span class="hljs-number">14</span>    <span class="hljs-number">15</span><br><br>&gt;&gt; A(<span class="hljs-number">1</span>:<span class="hljs-number">2</span>,:)<br><br><span class="hljs-built_in">ans</span> =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span><br>     <span class="hljs-number">6</span>     <span class="hljs-number">7</span>     <span class="hljs-number">8</span>     <span class="hljs-number">9</span>    <span class="hljs-number">10</span><br><br>&gt;&gt; A(<span class="hljs-number">2</span>:<span class="hljs-number">3</span>,<span class="hljs-number">1</span>:<span class="hljs-number">2</span>:<span class="hljs-number">5</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>     <span class="hljs-number">6</span>     <span class="hljs-number">8</span>    <span class="hljs-number">10</span><br>    <span class="hljs-number">11</span>    <span class="hljs-number">13</span>    <span class="hljs-number">15</span><br><br><span class="hljs-comment">% end运算符对应最后一个的意思</span><br>&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>;<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>;<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">13</span>,<span class="hljs-number">14</span>,<span class="hljs-number">15</span>;<span class="hljs-number">16</span>,<span class="hljs-number">17</span>,<span class="hljs-number">18</span>,<span class="hljs-number">19</span>,<span class="hljs-number">20</span>];<br>&gt;&gt; A(<span class="hljs-keyword">end</span>,:)<br><br><span class="hljs-built_in">ans</span> =<br><br>    <span class="hljs-number">16</span>    <span class="hljs-number">17</span>    <span class="hljs-number">18</span>    <span class="hljs-number">19</span>    <span class="hljs-number">20</span><br><br>&gt;&gt; A([<span class="hljs-number">1</span>,<span class="hljs-number">4</span>],<span class="hljs-number">3</span>:<span class="hljs-keyword">end</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>     <span class="hljs-number">3</span>     <span class="hljs-number">4</span>     <span class="hljs-number">5</span><br>    <span class="hljs-number">18</span>    <span class="hljs-number">19</span>    <span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
+<h4 id="434删除矩阵中的元素"><a class="markdownIt-Anchor" href="#434删除矩阵中的元素"></a> 4.3.4删除矩阵中的元素</h4>
+<p>利用空矩阵</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; x=[]<br><br>x =<br><br>     []<br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>;<br>      <span class="hljs-number">7</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">6</span>;<br>      <span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">8</span>]<br><br>A =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span><br>     <span class="hljs-number">7</span>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span>     <span class="hljs-number">2</span>     <span class="hljs-number">6</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">4</span>    <span class="hljs-number">-1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">8</span><br><br>&gt;&gt; A(:,[<span class="hljs-number">2</span>,<span class="hljs-number">4</span>])=[]<br><br>A =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">3</span>     <span class="hljs-number">0</span><br>     <span class="hljs-number">7</span>     <span class="hljs-number">0</span>     <span class="hljs-number">6</span><br>     <span class="hljs-number">1</span>    <span class="hljs-number">-1</span>     <span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+<h4 id="435改变矩阵的形状"><a class="markdownIt-Anchor" href="#435改变矩阵的形状"></a> 4.3.5改变矩阵的形状</h4>
+<p>reshape（A，m，n）：在矩阵总元素保持不变的前提下，将矩阵A重新排成mxn的二维矩阵</p>
+<p>注意：Reshape函数值改变原矩阵的行数和列数，但并不改变原矩阵的元素个数及其存储顺序</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">13</span>,<span class="hljs-number">14</span>,<span class="hljs-number">15</span>,<span class="hljs-number">16</span>,<span class="hljs-number">17</span>,<span class="hljs-number">18</span>,<span class="hljs-number">19</span>,<span class="hljs-number">20</span>];<br>&gt;&gt; B=<span class="hljs-built_in">reshape</span>(A,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)<br><br>B =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">5</span>     <span class="hljs-number">9</span>    <span class="hljs-number">13</span>    <span class="hljs-number">17</span><br>     <span class="hljs-number">2</span>     <span class="hljs-number">6</span>    <span class="hljs-number">10</span>    <span class="hljs-number">14</span>    <span class="hljs-number">18</span><br>     <span class="hljs-number">3</span>     <span class="hljs-number">7</span>    <span class="hljs-number">11</span>    <span class="hljs-number">15</span>    <span class="hljs-number">19</span><br>     <span class="hljs-number">4</span>     <span class="hljs-number">8</span>    <span class="hljs-number">12</span>    <span class="hljs-number">16</span>    <span class="hljs-number">20</span><br>&gt;&gt; C=A(:)    <span class="hljs-comment">%将向量堆叠成一个列向量，等同于reshape（A,20,1）</span><br><br>C =<br><br>     <span class="hljs-number">1</span><br>     <span class="hljs-number">2</span><br>     <span class="hljs-number">3</span><br>     <span class="hljs-number">4</span><br>     <span class="hljs-number">5</span><br>     <span class="hljs-number">6</span><br>     <span class="hljs-number">7</span><br>     <span class="hljs-number">8</span><br>     <span class="hljs-number">9</span><br>    <span class="hljs-number">10</span><br>    <span class="hljs-number">11</span><br>    <span class="hljs-number">12</span><br>    <span class="hljs-number">13</span><br>    <span class="hljs-number">14</span><br>    <span class="hljs-number">15</span><br>    <span class="hljs-number">16</span><br>    <span class="hljs-number">17</span><br>    <span class="hljs-number">18</span><br>    <span class="hljs-number">19</span><br>    <span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
+<h4 id="436讨论"><a class="markdownIt-Anchor" href="#436讨论"></a> 4.3.6讨论</h4>
+<p>1）命令X=[]与clear X有何不同？请上机验证结论。</p>
+<p><strong>命令X=[]是将X赋值为一个空矩阵，clear X是将X从工作区清除</strong></p>
+<p>2）有以下语句，说出x1、x2、x3的区别，并上机验证结论。</p>
+<p>x=[1:4;4,3,5,8]<br />
+x1=x(2:1)<br />
+x2=[]<br />
+x3=2:1<br />
+**提示：**依次执行下列语句，用isempty函数判断矩阵是否为空矩阵，用size函数确定矩阵每一维的大小，根据语句执行结果总结规律。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt;  x=[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>;<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">8</span>];   <span class="hljs-comment">%二行四列矩阵</span><br>&gt;&gt; x1=x(<span class="hljs-number">2</span>:<span class="hljs-number">1</span>);    <span class="hljs-comment">%只引用了x的行而没有引用列，所以x1是空的 1×0 double 行向量</span><br>&gt;&gt; x2=[];        <span class="hljs-comment">%给x2赋值为一个空矩阵，0行0列的空矩阵</span><br>&gt;&gt; x3=<span class="hljs-number">5</span>:<span class="hljs-number">1</span>;       <span class="hljs-comment">%是将x3赋值为从5到1步长为1的行向量，所以x3是空的 1×0 double 行向量</span><br>&gt;&gt; [<span class="hljs-built_in">isempty</span>(x),<span class="hljs-built_in">isempty</span>(x1),<span class="hljs-built_in">isempty</span>(x2),<span class="hljs-built_in">isempty</span>(x3)];<br>&gt;&gt; [<span class="hljs-built_in">size</span>(x);<span class="hljs-built_in">size</span>(x1);<span class="hljs-built_in">size</span>(x2);<span class="hljs-built_in">size</span>(x3)]<br><br><span class="hljs-built_in">ans</span> =<br><br>     <span class="hljs-number">2</span>     <span class="hljs-number">4</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">0</span>     <span class="hljs-comment">%一行零列</span><br>     <span class="hljs-number">0</span>     <span class="hljs-number">0</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">0</span><br><br>&gt;&gt; [<span class="hljs-built_in">isempty</span>(x),<span class="hljs-built_in">isempty</span>(x1),<span class="hljs-built_in">isempty</span>(x2),<span class="hljs-built_in">isempty</span>(x3)]<br><br><span class="hljs-built_in">ans</span> =<br><br>  <span class="hljs-number">1</span>×<span class="hljs-number">4</span> logical 数组<br><br>   <span class="hljs-number">0</span>   <span class="hljs-number">1</span>   <span class="hljs-number">1</span>   <span class="hljs-number">1</span><br><br>&gt;&gt; x1<br><br>x1 =<br><br>  空的 <span class="hljs-number">1</span>×<span class="hljs-number">0</span> double 行向量<br><br>&gt;&gt; x2<br><br>x2 =<br><br>     []<br><br>&gt;&gt; x3<br><br>x3 =<br><br>  空的 <span class="hljs-number">1</span>×<span class="hljs-number">0</span> double 行向量<br><br>&gt;&gt; <br></code></pre></td></tr></table></figure>
+<h2 id="5matlab基本运算基于矩阵"><a class="markdownIt-Anchor" href="#5matlab基本运算基于矩阵"></a> 5.Matlab基本运算（基于矩阵）</h2>
+<h3 id="51算术运算"><a class="markdownIt-Anchor" href="#51算术运算"></a> 5.1算术运算</h3>
+<p>（1）基本算术运算：+、-、*、/、\、^等</p>
+<p>加减要求矩阵同型，标量与矩阵进行加减，会自动广播</p>
+<p>A列等于B行，才可以相乘</p>
+<img src="https://i.loli.net/2020/08/25/siP7CtTKBwbnfye.png" srcset="/img/loading.gif" lazyload alt="image-20200622175140841" style="zoom:67%;" />
+<img src="https://i.loli.net/2020/08/25/k9UH2XqO8ocgGFm.png" srcset="/img/loading.gif" lazyload alt="image-20200622175312689" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]<br><br>A =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">2</span><br><br>&gt;&gt; A^<span class="hljs-number">2</span><br><br><span class="hljs-built_in">ans</span> =<br><br>     <span class="hljs-number">3</span>     <span class="hljs-number">6</span><br>     <span class="hljs-number">3</span>     <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<p>（2）点运算：主要分为，点乘、点左除、点右除、点平方</p>
+<img src="https://i.loli.net/2020/08/25/uQCjimoKH8E3seW.png" srcset="/img/loading.gif" lazyload alt="image-20200622175649939" style="zoom:67%;" />
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; A=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>;,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>;<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];<br>&gt;&gt; B=[<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>;<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>];<br><span class="hljs-comment">%下面验证点乘和乘的区别</span><br>&gt;&gt; C=A.*B<br><br>C =<br><br>    <span class="hljs-number">-1</span>     <span class="hljs-number">0</span>     <span class="hljs-number">3</span><br>     <span class="hljs-number">4</span>    <span class="hljs-number">-5</span>     <span class="hljs-number">0</span><br>     <span class="hljs-number">0</span>     <span class="hljs-number">8</span>     <span class="hljs-number">9</span><br><br>&gt;&gt; D=A*B<br><br>D =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">4</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>    <span class="hljs-number">10</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>    <span class="hljs-number">16</span><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB"><span class="hljs-comment">%求当x等于0.1、0.4、0.7和1时，分别求y=sin（x）cos（x）的值</span><br>&gt;&gt; x=<span class="hljs-number">0.1</span>:<span class="hljs-number">0.3</span>:<span class="hljs-number">1</span>;<br>&gt;&gt; y=<span class="hljs-built_in">sin</span>(x).*<span class="hljs-built_in">cos</span>(x);<br>&gt;&gt; y<br><br>y =<br><br>    <span class="hljs-number">0.0993</span>    <span class="hljs-number">0.3587</span>    <span class="hljs-number">0.4927</span>    <span class="hljs-number">0.4546</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="52关系运算"><a class="markdownIt-Anchor" href="#52关系运算"></a> 5.2关系运算</h3>
+<img src="https://i.loli.net/2020/08/25/HfUonKQYB8qv4FT.png" srcset="/img/loading.gif" lazyload alt="image-20200622180522722" style="zoom:80%;" />
+<p>值为布尔值：0或1</p>
+<p>当参与比较的量是两个同型的矩阵是比较，是对两矩阵进行相同位置的元素，按标量关系运算规则逐个进行最终的关系运算的结果是一个与原矩阵同型的矩阵。它的元素由0或1组成</p>
+<p>当参与比较的一个是标量，另一个是矩阵式，则把标量与矩阵的每一个元素按标量关系运算规则逐个比较，最终的关系运算的结果是一个与原矩阵同型的矩阵，它的元素由0或1组成</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">D =<br><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     <span class="hljs-number">4</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>    <span class="hljs-number">10</span><br>     <span class="hljs-number">1</span>     <span class="hljs-number">1</span>    <span class="hljs-number">16</span><br><br>&gt;&gt; P=<span class="hljs-built_in">rem</span>(D,<span class="hljs-number">2</span>)==<span class="hljs-number">0</span><br><br>P =<br><br>  <span class="hljs-number">3</span>×<span class="hljs-number">3</span> logical 数组<br><br>   <span class="hljs-number">0</span>   <span class="hljs-number">0</span>   <span class="hljs-number">1</span><br>   <span class="hljs-number">0</span>   <span class="hljs-number">0</span>   <span class="hljs-number">1</span><br>   <span class="hljs-number">0</span>   <span class="hljs-number">0</span>   <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<h3 id="53逻辑运算"><a class="markdownIt-Anchor" href="#53逻辑运算"></a> 5.3逻辑运算</h3>
+<p><strong>&amp;与、|或、~非</strong></p>
+<p>在算数运算关系运算和逻辑运算中，算术运算的优先级最高，逻辑运算优先级最低，但逻辑非运算是单目运算，它的优先级比双目运算要高</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; ~(<span class="hljs-number">9</span>==<span class="hljs-number">1</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>  logical<br><br>   <span class="hljs-number">1</span><br><br>&gt;&gt; ~<span class="hljs-number">9</span>==<span class="hljs-number">1</span><br><br><span class="hljs-built_in">ans</span> =<br><br>  logical<br><br>   <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; m=<span class="hljs-number">100</span>:<span class="hljs-number">999</span>;<br>&gt;&gt; m1=<span class="hljs-built_in">rem</span>(m,<span class="hljs-number">10</span>);<br>&gt;&gt; m2=<span class="hljs-built_in">rem</span>(<span class="hljs-built_in">fix</span>(m/<span class="hljs-number">10</span>),<span class="hljs-number">10</span>);<br>&gt;&gt; m3=<span class="hljs-built_in">fix</span>(m/<span class="hljs-number">100</span>);<br>&gt;&gt; k=<span class="hljs-built_in">find</span>(m==m1.*m1.*m1+m2.*m2.*m2+m3.*m3.*m3)<br><span class="hljs-comment">%find函数找到水仙花数的序号赋值给变量k</span><br><br>k =<br><br>    <span class="hljs-number">54</span>   <span class="hljs-number">271</span>   <span class="hljs-number">272</span>   <span class="hljs-number">308</span><br><br>&gt;&gt; s=m(k)<br><br>s =<br><br>   <span class="hljs-number">153</span>   <span class="hljs-number">370</span>   <span class="hljs-number">371</span>   <span class="hljs-number">407</span><br></code></pre></td></tr></table></figure>
+<h3 id="54字符串处理"><a class="markdownIt-Anchor" href="#54字符串处理"></a> 5.4字符串处理</h3>
+<h4 id="541字符串简介"><a class="markdownIt-Anchor" href="#541字符串简介"></a> 5.4.1字符串简介</h4>
+<p>在MATLAB中，字符串是用单引号括起来的字符序列</p>
+<p>字符串也被当成一个行向量，在字符串中如果想输入单引号，就需要输入两个单引号才能被认为是单独的一个单引号</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; xm=<span class="hljs-string">&#x27;tianjin&#x27;</span><br><br>xm =<br><br>    <span class="hljs-string">&#x27;tianjin&#x27;</span><br><br>&gt;&gt; xm(<span class="hljs-number">1</span>:<span class="hljs-number">3</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>    <span class="hljs-string">&#x27;tia&#x27;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; a=<span class="hljs-string">&#x27;tian&#x27;&#x27;jin&#x27;</span><br><br>a =<br><br>    <span class="hljs-string">&#x27;tian&#x27;</span>jin&#x27;<br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; ch=[<span class="hljs-string">&#x27;123456&#x27;</span>;<span class="hljs-string">&#x27;abcdef&#x27;</span>];<br>&gt;&gt; ch(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>    <span class="hljs-string">&#x27;c&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/08/25/pV1ctgwMjABd26X.png" srcset="/img/loading.gif" lazyload alt="image-20200623105415990" /></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; ch=<span class="hljs-string">&#x27;ABc123&#x27;</span>;<br>&gt;&gt; subch=ch(<span class="hljs-number">1</span>:<span class="hljs-number">5</span>)<br><br>subch =<br><br>    <span class="hljs-string">&#x27;ABc12&#x27;</span><br><br>&gt;&gt; revch=ch(<span class="hljs-keyword">end</span>:<span class="hljs-number">-1</span>:<span class="hljs-number">1</span>)    <span class="hljs-comment">%步长为-1，从尾到头</span><br><br>revch =<br><br>    <span class="hljs-string">&#x27;321cBA&#x27;</span><br><br>&gt;&gt; k=<span class="hljs-built_in">find</span>(ch&gt;=<span class="hljs-string">&#x27;a&#x27;</span>&amp;ch&lt;=<span class="hljs-string">&#x27;z&#x27;</span>)<br><br>k =<br><br>     <span class="hljs-number">3</span><br><br>&gt;&gt; ch(k)=ch(k)-(<span class="hljs-string">&#x27;a&#x27;</span>-<span class="hljs-string">&#x27;A&#x27;</span>)<br><br>ch =<br><br>    <span class="hljs-string">&#x27;ABC123&#x27;</span><br><br>&gt;&gt; <span class="hljs-built_in">length</span>(k)<br><br><span class="hljs-built_in">ans</span> =<br></code></pre></td></tr></table></figure>
+<h4 id="542函数"><a class="markdownIt-Anchor" href="#542函数"></a> 5.4.2函数</h4>
+<p>（1）eval(s)这是一个进行字符串的执行的函数，它可以把字符串里面包含的内容直接进行执行</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; t=<span class="hljs-built_in">pi</span>;<br>&gt;&gt; m=<span class="hljs-string">&#x27;[t,sin(t),cos(t)]&#x27;</span>;    <span class="hljs-comment">%记得带中括号</span><br>&gt;&gt; y=eval(m)<br><br>y =<br><br>    <span class="hljs-number">3.1416</span>    <span class="hljs-number">0.0000</span>   <span class="hljs-number">-1.0000</span><br>    <br>&gt;&gt; eval(<span class="hljs-string">&#x27;sqrt(4)+2&#x27;</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>     <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
+<p>（2）字符串与数值之间的转换</p>
+<p><code>abs</code>和<code>double</code>都可以获取字符串矩阵的ASCII码值矩阵</p>
+<p><code>char</code>函数可以把ASCII码矩阵转换成字符串矩阵</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; s1=<span class="hljs-string">&#x27;MATLAB&#x27;</span>;<br>&gt;&gt; a=<span class="hljs-built_in">abs</span>(s1)<br><br>a =<br><br>    <span class="hljs-number">77</span>    <span class="hljs-number">65</span>    <span class="hljs-number">84</span>    <span class="hljs-number">76</span>    <span class="hljs-number">65</span>    <span class="hljs-number">66</span><br><br>&gt;&gt; char(a+<span class="hljs-number">32</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>    <span class="hljs-string">&#x27;matlab&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>（3）比较字符串</p>
+<p>字符串的比较有两种方法，利用关系运算符或者字符串比较函数</p>
+<p>利用关系运算符进行比较，就是把两个字符串里的每个字符依次按照ASCII码值大小逐个进行比较，比较的结果呢是一个数值向量，向量中的元素要么是1要么是0</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs MATLAB">&gt;&gt; <span class="hljs-string">&#x27;www0&#x27;</span>&lt;=<span class="hljs-string">&#x27;w123&#x27;</span><br><br><span class="hljs-built_in">ans</span> =<br><br>  <span class="hljs-number">1</span>×<span class="hljs-number">4</span> logical 数组<br><br>   <span class="hljs-number">1</span>   <span class="hljs-number">0</span>   <span class="hljs-number">0</span>   <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>函数：</p>
+<p><code>strcmp(s1,s2)</code>：用来比较两个字符串是否相等，如果相等返回结果为一，否则返回零</p>
+<p><code>strncmp(s1,s2,n)</code>: 用来比较两个字符串前n个字符是否相等，如果相等，返回一，否则返回零</p>
+<p><code>strcmpi(s1,s2)</code>: 在忽略字母大小写前提下比较字符串是否相等</p>
+<p><code>strncmpi(s1,s2,n)</code>: 在忽略字母大小写前提下，比较前n个字符是否相等</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; strncmpi(<span class="hljs-string">&#x27;www&#x27;</span>,<span class="hljs-string">&#x27;123&#x27;</span>,<span class="hljs-number">2</span>)<br><br><span class="hljs-built_in">ans</span> =<br><br>  logical<br><br>   <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>(4)字符串的查找与替换</p>
+<p><code>findstr(s1,s2)</code>: 返回短字符串在长字符串中的开始位置</p>
+<p><code>strrep(s1,s2,s3)</code>: 将字符串s1中的所有子字符串s2替换为字符串s3</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs matlab">&gt;&gt; result=strrep(<span class="hljs-string">&#x27;this is test&#x27;</span>,<span class="hljs-string">&#x27;test&#x27;</span>,<span class="hljs-string">&#x27;class&#x27;</span>)<br><br>result =<br><br>    <span class="hljs-string">&#x27;this is class&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="6参考"><a class="markdownIt-Anchor" href="#6参考"></a> 6.参考</h2>
+<ul>
+<li>中南大学《Matlab与科学计算》</li>
+<li>《Introduction  to Programming with MATLAB》on Cousera</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Matlab/">Matlab</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Matlab%E5%9F%BA%E7%A1%80/">Matlab基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/11/%E7%89%A9%E5%8C%96%E4%B8%8A-%E4%BD%9C%E5%9B%BE%E6%BA%90%E7%A0%81/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">物理化学实验（上）-MATLAB作图源码</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
