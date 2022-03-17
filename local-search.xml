@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>conda常用指令</title>
+    <link href="/2022/03/11/conda%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E(%E5%90%AB%E5%AE%9E%E4%BE%8B)/"/>
+    <url>/2022/03/11/conda%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E(%E5%90%AB%E5%AE%9E%E4%BE%8B)/</url>
+    
+    <content type="html"><![CDATA[<h1 id="conda使用积累"><a class="markdownIt-Anchor" href="#conda使用积累"></a> conda使用积累</h1><h2 id="0注意"><a class="markdownIt-Anchor" href="#0注意"></a> 0.注意</h2><p>在使用下面的大部分指令时，环境应在<code>AnacondaPrompt</code>终端或者Mac终端下进行指令</p><h2 id="1用anaconda更新或者下载包"><a class="markdownIt-Anchor" href="#1用anaconda更新或者下载包"></a> 1.用anaconda更新或者下载包</h2><h3 id="10更新"><a class="markdownIt-Anchor" href="#10更新"></a> 1.0更新</h3><ul><li><code>pip list</code> 查看已经安装的包列表</li><li><code>pip list --outdated</code></li><li><code>pip install --upgrade library_name</code></li><li>进入自己的虚拟模块时要用<code>activate name</code></li></ul><h3 id="11使用清华源下载第三方库"><a class="markdownIt-Anchor" href="#11使用清华源下载第三方库"></a> 1.1使用清华源下载第三方库</h3><p>比如：<code>pip install tensorflow==2.1 -i https://pypi.tuna.tsinghua.edu.cn/simple</code></p><p>从<code>-i</code>部分直接加在日常指令之后即可,如果更换过源，即可不必每次都指定源路径</p><h2 id="2对conda的基本掌握"><a class="markdownIt-Anchor" href="#2对conda的基本掌握"></a> 2.对conda的基本掌握：</h2><h3 id="21基本操作"><a class="markdownIt-Anchor" href="#21基本操作"></a> 2.1基本操作</h3><ul><li>升级全部库：  <code>conda upgrade --all</code></li><li>升级一个包  <code>conda update packagename</code></li><li>安装包：<code>conda install packagename</code></li><li>也可以以空格分开包名安装多个包：   <code>conda installl numpy pandas scipy</code></li><li>安装固定版本的包：<code>conda install numpy =1.10</code></li><li>移除一个包：<code>conda remove packagename</code></li><li>查看所有包：<code>conda list</code></li></ul><h3 id="22管理python环境"><a class="markdownIt-Anchor" href="#22管理python环境"></a> 2.2管理python环境</h3><ul><li>创建虚拟环境：<code>conda create -n env_name list of packagenaem</code><br /><code>eg: conda create -n env_name pandas</code></li><li>指定python版本：<code>conda create -n env_name python2 = 2.7 pandas</code></li><li>激活环境： <code>activate env_name</code></li><li>退出环境 :  <code>conda deactivate</code></li><li>删除虚拟环境：<code>conda env remove -n env_name</code></li><li>显示所有虚拟环境：<code>conda env list</code></li><li>conda 创建的虚拟环境是在anaconda安装目录下的evens下，所以使用pycharm，只要在特定项目配置运行环境就可以了</li><li>关闭打开终端时默认进入base环境：<code>conda config --set auto_activate_base false</code></li><li>查询已安装环境<code>conda info --envs</code></li></ul><h2 id="3使用jupyter-notebook"><a class="markdownIt-Anchor" href="#3使用jupyter-notebook"></a> 3使用jupyter notebook</h2><h4 id="30在环境下安装jupyter-notebook"><a class="markdownIt-Anchor" href="#30在环境下安装jupyter-notebook"></a> 3.0在环境下安装jupyter notebook</h4><ul><li><p>激活对应环境</p></li><li><p><code>conda install packagename</code></p></li></ul><h4 id="31日常使用"><a class="markdownIt-Anchor" href="#31日常使用"></a> 3.1日常使用</h4><ul><li>cd进入到jupyter项目文件之中</li><li>激活对应conda环境：<code>activate env_name</code></li><li>打开jupyter notebook：<code>jupyter notebook</code></li><li>跳转浏览器，开始编程</li></ul><h4 id="32安装工具扩展"><a class="markdownIt-Anchor" href="#32安装工具扩展"></a> 3.2安装工具扩展🔧</h4><ul><li><code>pip3 install jupyter_contrib_nbextensions</code> 安装扩展包</li><li>在jupyter界面安装扩展（在conda的安装了jupyter的环境下才可以），无权限时可以加sudo<ul><li><code>jupyter contrib nbextension install</code></li></ul></li><li>常用扩展工具介绍见：<a href="https://mp.weixin.qq.com/s/uWjJOgsnEMzzaOBAzgKkGw">https://mp.weixin.qq.com/s/uWjJOgsnEMzzaOBAzgKkGw</a></li></ul><h4 id="33切换book中的python内核环境"><a class="markdownIt-Anchor" href="#33切换book中的python内核环境"></a> 3.3切换book中的python内核环境</h4><ul><li><p>安装插件：</p><figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">conda install nb_conda<br></code></pre></td></tr></table></figure></li><li><p>启动jupyter后新建book就可以选择conda中不同环境了，从而使用不同内核</p></li></ul><h4 id="34后台挂起jupyter服务"><a class="markdownIt-Anchor" href="#34后台挂起jupyter服务"></a> 3.4后台挂起Jupyter服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">nohup jupyter notebook //后台挂起运行jupyter，默认是8888本地端口，关闭终端后也可访问<br>jupyter notebook list //展示当前的jupyter进程<br>jupyter notebook stop 8888  //关闭8888端口的jupyter进程服务<br></code></pre></td></tr></table></figure><h2 id="4安装环境的实际记录"><a class="markdownIt-Anchor" href="#4安装环境的实际记录"></a> 4.安装环境的实际记录</h2><h3 id="41安装d2l遇见的坑"><a class="markdownIt-Anchor" href="#41安装d2l遇见的坑"></a> 4.1安装d2l遇见的坑</h3><blockquote><p>在使用d2l的包时，出现了jupyter notebook内核反复挂掉的情况，故卸载forge换成conda</p><p>结果选择py3.9时，work了</p></blockquote><ul><li>使用conda新建d2l虚拟环境</li><li>安装python<ul><li>通过本次案例发现，3.8版本的python去安装d2l是会出现编译的问题，所以以后出现问题可以从这里解决，或许更高版本的python就解决了</li></ul></li><li>安装：d2l, torch, torchvision</li><li>安装：nb_conda，用于切换jupyter的内核（3.10版本不知为何下载失败）</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Anaconda</tag>
+      
+      <tag>d2l</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>西瓜书 04章 决策树</title>
     <link href="/2022/01/23/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%86%B3%E7%AD%96%E6%A0%91/"/>
     <url>/2022/01/23/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%86%B3%E7%AD%96%E6%A0%91/</url>
