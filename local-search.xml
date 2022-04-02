@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>GCC与makefile入门</title>
+    <link href="/2022/04/02/GCC%E7%BC%96%E8%AF%91%E4%B8%8EMakefile/"/>
+    <url>/2022/04/02/GCC%E7%BC%96%E8%AF%91%E4%B8%8EMakefile/</url>
+    
+    <content type="html"><![CDATA[<h1 id="gcc与makefile简介"><a class="markdownIt-Anchor" href="#gcc与makefile简介"></a> GCC与Makefile简介</h1><h2 id="1gcc及其常用操作"><a class="markdownIt-Anchor" href="#1gcc及其常用操作"></a> 1.GCC及其常用操作</h2><h3 id="10-gcc简介"><a class="markdownIt-Anchor" href="#10-gcc简介"></a> 1.0 GCC简介</h3><blockquote><p>官方网址：<a href="https://gcc.gnu.org/">https://gcc.gnu.org/</a></p></blockquote><ul><li>什么是GCC<ul><li>即GNU C Compiler的缩写，但是随着多年的发展，它支持了多种语言，如C、C++、Java等，已经成为了<strong>GNU Compiler Collection</strong>的缩写，也就是整套的编译器套件；GCC支持各种操作系统，可以说是无所不在</li></ul></li><li>gcc与g++的区别？<ul><li>一般编译c程序使用gcc，而编译c<ins>程序时使用g</ins>，g++同时可以兼容gcc，在编译c文件时会自动调用gcc</li></ul></li></ul><h3 id="11-gcc编译常用命令"><a class="markdownIt-Anchor" href="#11-gcc编译常用命令"></a> 1.1 GCC编译常用命令</h3><ul><li><p><strong>基本使用格式</strong>：<code>$ gcc [filename.c] [操作]</code></p></li><li><p>源文件、目标文件、可执行文件的区别：</p><ul><li>预处理：gcc -E *.c  &gt; *.txt （重定向，把结果输出到某个文件里）<ul><li>头文件的引入</li><li>宏的展开</li><li>指令的处理</li></ul></li><li>编译：gcc -c *.c<ul><li>生成目标文件 （*.obj文件）</li></ul></li><li>链接：<ul><li>将编译的多个目标文件、静态库、动态库链接成一个可执行文件</li><li>甚至可以只打包成静态库和动态库，连可执行文件都不给，如SDK，使用者只能调用函数而不知道源代码</li></ul></li></ul><img src="https://cdn.jsdelivr.net/gh/DongHaotian100/cloud_img@master/typora/image-20220331191401741.png" alt="image-20220331191401741" style="zoom: 33%;" /></li><li><p><strong>生成目标文件</strong>：<code>$ gcc -c main.c</code></p><ul><li>-c代表生成的是目标文件，名字为main.o文件</li></ul></li><li><p><strong>生成编译的可执行文件</strong>：<code>$ gcc -o main.c main.out</code></p><ul><li>-o main.out，mian.out是输出的可执行文件的名字，这个命令一步到位实现了预处理、编译和链接的过程</li><li>main.out对应的是输出的文件名，是一个可执行文件，如果不使用它，编译出来额可执行文件默认为a.out，所以如果编译完后又找不到了文件，直接使用/.a.out即可执行</li><li>生成的文件如果没有执行权限，可以使用<code>sudo chmod +x main.out</code>来增加可执行权限</li></ul></li><li><p><strong>生成汇编文件</strong>：gcc -S 可以生成用于自己查看汇编文件</p></li></ul><h2 id="2makefile的简单使用"><a class="markdownIt-Anchor" href="#2makefile的简单使用"></a> 2.Makefile的简单使用</h2><h3 id="20makefile简介"><a class="markdownIt-Anchor" href="#20makefile简介"></a> 2.0Makefile简介</h3><ul><li>makefile是编译器的辅助工具，大型项目的文件非常多，我们不太可能逐渐编译，一个linux内核源码都会有几千上万的文件，如果只有小量代码，几乎用不到makefile，当文件在100以上才能体现出优越性，普通情况使用集成开发环境进行编译即可</li><li>与linux同属于开源组织GNU</li><li>为啥使用makefile？<ul><li>当项目文件多的时候，需要一个个去<code>gcc -c</code>生成多个.o的文件，可以说是比较麻烦</li></ul></li></ul><h3 id="21简单makefile编写"><a class="markdownIt-Anchor" href="#21简单makefile编写"></a> 2.1简单makefile编写</h3><ul><li><p>编写步骤：</p><ul><li>按照最终文件、目标文件、源文件的顺序写，与实际的预处理、编译、链接是倒着的</li><li>注意缩进是4个空格，像python那样严格要求的</li></ul></li><li><p>示例：编写一个文件名叫做makefile的文件</p><figure class="highlight makefile"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><pre><code class="hljs makefile">// 目标可执行文件：被链接的文件🔗<br><span class="hljs-section">final_app.exe:main.o file_a.o file_b.o</span><br>    gcc main.o file_a.o file_b.o -o final_app.exe<br><span class="hljs-section">main.o:main.c</span><br>    gcc -c main.c -o main.o<br><span class="hljs-section">file_a.o:file_a.c</span><br>    gcc -c file.c -o file_a.o<br><span class="hljs-section">file_b.o:file_b.c</span><br>    gcc -c file_b.c -o file_b.o<br></code></pre></td></tr></table></figure></li><li><p>在编写好makefile文件后，保存在工作目录，使用命令：<code>make</code>就可以进行自动化编译了</p></li><li><p>为了方便清理目标文件，可在上面的makefile文件中继续添加：</p><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">clean:</span><br>    rm -f *.o final_app.exe<br></code></pre></td></tr></table></figure><p>保存后再进行执行：<code>make clean</code>就可以</p></li></ul><h3 id="22快速makefile编写"><a class="markdownIt-Anchor" href="#22快速makefile编写"></a> 2.2快速makefile编写</h3><ul><li><p>上面的makefile文件还是编写起来太过于繁琐，所以采用更快捷的编写方式：</p><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">final_app.exe:main.o file_a.o file_b.o</span><br>    gcc *.o -o <span class="hljs-variable">$@</span><br><span class="hljs-section">%.o:%.c</span><br>    gcc -c <span class="hljs-variable">$&lt;</span> -o <span class="hljs-variable">$@</span><br><span class="hljs-section">clean:</span><br>    rm -f *.o final_app.exe<br></code></pre></td></tr></table></figure><p>上面的方式主要是使用了通配符表示多个文件，类似于正则表达式</p><ul><li>*是代表任意个任意字符</li><li>$@表示目标</li><li>$&lt;表示一个个去匹配依赖</li></ul></li></ul><blockquote><p>本文参考视频：<a href="https://www.bilibili.com/video/BV1Rp4y1i7SZ?share_source=copy_web">https://www.bilibili.com/video/BV1Rp4y1i7SZ?share_source=copy_web</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>gcc</tag>
+      
+      <tag>makefile</tag>
+      
+      <tag>g++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python中哈希与不可哈希的探究</title>
     <link href="/2022/03/23/Python%E4%B8%AD%E5%93%88%E5%B8%8C%E4%B8%8E%E4%B8%8D%E5%8F%AF%E5%93%88%E5%B8%8C%E7%9A%84%E6%8E%A2%E7%A9%B6/"/>
     <url>/2022/03/23/Python%E4%B8%AD%E5%93%88%E5%B8%8C%E4%B8%8E%E4%B8%8D%E5%8F%AF%E5%93%88%E5%B8%8C%E7%9A%84%E6%8E%A2%E7%A9%B6/</url>
