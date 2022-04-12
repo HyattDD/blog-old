@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>初始化文件__init__.py的使用</title>
+    <link href="/2022/04/12/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%87%E4%BB%B6__init__.py%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <url>/2022/04/12/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%87%E4%BB%B6__init__.py%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="_init_py的使用"><a class="markdownIt-Anchor" href="#_init_py的使用"></a> _<em>init</em>_.py的使用</h1><h2 id="1简介"><a class="markdownIt-Anchor" href="#1简介"></a> 1.简介</h2><ul><li>在python3.3之前，如果在文件夹中不加这个文件，那么直接从文件中导入模块是不行的，也就是说只能从带_<em>init</em>_.py的文件夹中导入模块，因为只有带了才是被识别为Package，但是在3.3之后没有它也可以导入</li><li><strong>特性</strong>：在我们导入某个包（文件夹📁）中的任意模块（.py文件📃）时这个初始化文件是会被首先执行的，比如下面的src中的douban_spider.py中的某个函数func1被其他的文件导入时，会先执行在_<em>init</em>_.py的代码</li></ul><img src="https://cdn.jsdelivr.net/gh/DongHaotian100/cloud_img@master/typora/image-20220412222600574.png" alt="image-20220412222600574" style="zoom:50%;" /><h2 id="2使用"><a class="markdownIt-Anchor" href="#2使用"></a> 2.使用</h2><h3 id="21简化模块中函数的导入"><a class="markdownIt-Anchor" href="#21简化模块中函数的导入"></a> 2.1简化模块中函数的导入</h3><ul><li><p>当我们在一个包中有很多模块文件时，我们的初心是使用各个模块中的函数，并不想记录模块的文件名，希望只用记忆包名就能使用模块中的函数时，可以在此文件中先逐层import一下，后面就可以在自己的代码中简化导入了，比如：</p><ul><li><p>_<em>init</em>_.py</p><figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pack_A.module_a <span class="hljs-keyword">import</span> func_1  <span class="hljs-comment"># 提前初始化导入</span><br></code></pre></td></tr></table></figure></li><li><p><a href="http://main.py">main.py</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pack_A <span class="hljs-keyword">import</span> func_1  <span class="hljs-comment"># 使用中会方便一些</span><br></code></pre></td></tr></table></figure></li></ul></li></ul><h3 id="22设置package中的模块导入范围"><a class="markdownIt-Anchor" href="#22设置package中的模块导入范围"></a> 2.2设置package中的模块导入范围</h3><ul><li>_<em>init</em>_.py</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">__all__ = [<span class="hljs-string">&#x27;pack_A&#x27;</span>]  <span class="hljs-comment"># 设置后导入整包后，只有这一个模块能被使用</span><br></code></pre></td></tr></table></figure><h3 id="23利用初始化文件先被执行的特性"><a class="markdownIt-Anchor" href="#23利用初始化文件先被执行的特性"></a> 2.3利用初始化文件先被执行的特性</h3><ul><li>通过使用初始化文件，可以在文件中编写一些代码，这些代码会在每次导入包时被执行，比如写一些提示信息之类</li></ul><h3 id="24使用其写一些全局方法"><a class="markdownIt-Anchor" href="#24使用其写一些全局方法"></a> 2.4使用其写一些全局方法</h3><ul><li><p>可以直接在这个初始化模块中写一些函数，这些函数可以直接在导入包后直接被调用（仍然是使用module.func格式）</p></li><li><p>_<em>init</em>_.py</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br></code></pre></td></tr></table></figure><p><a href="http://main.py">main.py</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pack_A<br>pack_A.hello()<br><br>---<br>输出：hello<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python基础</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GCC与makefile入门</title>
     <link href="/2022/04/02/GCC%E7%BC%96%E8%AF%91%E4%B8%8EMakefile/"/>
     <url>/2022/04/02/GCC%E7%BC%96%E8%AF%91%E4%B8%8EMakefile/</url>
