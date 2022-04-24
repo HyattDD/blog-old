@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/DongHaotian100/cloud_img@master/typora/image-20220412222600574.png">
 <meta property="article:published_time" content="2022-04-12T13:20:00.000Z">
-<meta property="article:modified_time" content="2022-04-12T14:57:52.637Z">
+<meta property="article:modified_time" content="2022-04-24T08:52:52.117Z">
 <meta property="article:author" content="Dcode">
 <meta property="article:tag" content="python基础">
 <meta name="twitter:card" content="summary_large_image">
@@ -245,8 +245,10 @@
 <ul>
 <li>在python3.3之前，如果在文件夹中不加这个文件，那么直接从文件中导入模块是不行的，也就是说只能从带_<em>init</em>_.py的文件夹中导入模块，因为只有带了才是被识别为Package，但是在3.3之后没有它也可以导入</li>
 <li><strong>特性</strong>：在我们导入某个包（文件夹📁）中的任意模块（.py文件📃）时这个初始化文件是会被首先执行的，比如下面的src中的douban_spider.py中的某个函数func1被其他的文件导入时，会先执行在_<em>init</em>_.py的代码</li>
-</ul>
+<li>
 <img src="https://cdn.jsdelivr.net/gh/DongHaotian100/cloud_img@master/typora/image-20220412222600574.png" srcset="/img/loading.gif" lazyload alt="image-20220412222600574" style="zoom:50%;" />
+</li>
+</ul>
 <h2 id="2使用"><a class="markdownIt-Anchor" href="#2使用"></a> 2.使用</h2>
 <h3 id="21简化模块中函数的导入"><a class="markdownIt-Anchor" href="#21简化模块中函数的导入"></a> 2.1简化模块中函数的导入</h3>
 <ul>
