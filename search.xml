@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>认识main函数</title>
+      <link href="/2022/11/12/%E8%AE%A4%E8%AF%86main%E5%87%BD%E6%95%B0/"/>
+      <url>/2022/11/12/%E8%AE%A4%E8%AF%86main%E5%87%BD%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<h1>认识main函数</h1><h3 id="1-main函数的参数">1. main函数的参数</h3><ul><li><code>main</code>函数也是可以带参数的，常有两个参数，一个是<code>int argc</code>, 一个是<code>char* argv[]</code>，c是count，代表参数数量，v是vector，代表参数数组。实际上还有一个参数，<code>char *envp[]</code>，用于存放环境变量。</li><li>我们用一个代码举例：</li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> i;  </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; argc; i++)  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Argument %d is %s\n&quot;</span>, i, argv[i]);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure><ul><li>第一个参数，<code>int</code>型的<code>argc</code>，为整型，用来统计程序运行时发送给<code>main</code>函数的命令行参数的<strong>个数</strong>。</li><li>第二个参数，<code>char*</code>型的<code>argv[]</code>，为字符串数组，用来存放指向字符串的<strong>指针元素</strong>，每一个<strong>指针元素</strong>指向一个字符串参数。</li><li>所以使用<code>./a.out arg1 arg2 arg3</code>指令在命令行中运行此代码时，函数输出会告诉我们：<ul><li>Argument 0 is <code>./a.out</code></li><li>Argument 1 is <code>arg1</code></li><li>Argument 2 is <code>arg2</code></li><li>Argument 3 is <code>arg3</code></li></ul></li><li>这里需要注意第一个参数是当前程序运行的全路径名，这也告诉我们，对于一个可执行文件来说，只要把其路径和文件名指出，就可以直接运行</li><li>这里<code>char **argv</code>也可以用来替换<code>char* argv[]</code>，二者的异同如下：<ul><li>对于函数传参，这两种方式的运行结果是相同的编译器不会区别对待</li><li><code>char* argv[]</code>声明一个数组argv，该数组保存多个指向char类型的指针，会在内存中分配连续的数组空间，<code>char **argv</code>声明argv为指向（指向 char 类型的指针）的指针，也就是指针的指针，不会分配连续内存空间</li></ul></li></ul><h3 id="2-main函数执行前后">2. main函数执行前后</h3><p>我们常说main函数是程序的第一个入口，但是事实真的如此吗？对于我们自己写的程序而言看起来是这样的，但是从操作系统的角度看，并不是我们写的main函数，而是系统预制的函数。</p><p>系统发现我们想要执行一个程序，便会安排程序执行。具体怎么安排由系统的调度程序进行调度。调度程序分析待运行的程序类型，去匹配该程序所需要的基础环境。这里说的基础环境，指的是，程序要运行需要的基础运行库。C语言运行时需要的库是：“C运行时库”，就是 <code>C run-time library</code>，对应在C++中就是<code>Standard C++ Library</code>。</p><p>linux系统下压板程序的入口是&quot;_start&quot;函数，这个函数是linux系统库（Glibc，GNU C Library）的一部分，当我们的程序和Glibc链接在一起形成最终的可执行文件的之后，这个函数就是程序执行初始化的入口函数。如果我们的C程序不和基本的Glibc进行链接，运行会报错，因为缺少基本的运行环境。对应在C++中有libc++，是针对clang编译器特别重写的C++标准库，我们在XOS中调试程序时常会看到。</p><p>典型程序执行步骤</p><ul><li><p>操作系统创建进程后，把控制权交到了程序入口，这个入口往往是程序运行库中的某个入口函数。</p></li><li><p>入口函数对运行库和程序运行环境进行初始化，包括堆、I/O、线程、全局变量的构造等等。</p></li><li><p>入口函数在完成初始化之后，调用main函数，正式开始执行函数主体部分。</p></li><li><p>main函数执行完毕之后，返回到入口函数，入口函数进行清理工作，包括全局变量析构、堆销毁、关闭I/O等，然后进行系统调用结束进程。</p></li></ul><p>下面我们看一下main函数在哪一步被调用</p><ul><li><p>_start函数中会调用main函数</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> _start()</span><br><span class="line">&#123;</span><br><span class="line">　　%ebp = <span class="number">0</span>;</span><br><span class="line">　　<span class="keyword">int</span> argc = pop from <span class="built_in">stack</span></span><br><span class="line">　　<span class="keyword">char</span> ** argv = top of <span class="built_in">stack</span>;</span><br><span class="line">　　__libc_start_main(main, argc, argv, __libc_csu_init, __linc_csu_fini,</span><br><span class="line">　　edx, top of <span class="built_in">stack</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>而_start函数中会调用__libc_start_main函数，而libc_start_main函数的参数就有main函数</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> __libc_start_main(</span><br><span class="line">        <span class="keyword">int</span> (*main)(<span class="keyword">int</span>, <span class="keyword">char</span> **, <span class="keyword">char</span> *),</span><br><span class="line">        <span class="keyword">char</span> * __unbounded *__unbounded ubp_av,</span><br><span class="line">        __typeof(main) init,</span><br><span class="line">        <span class="keyword">void</span> (*fini)(<span class="keyword">void</span>),</span><br><span class="line">        <span class="keyword">void</span> (*rtld_fini)(<span class="keyword">void</span>),</span><br><span class="line">        viud *__unbounded stack_end)</span><br></pre></td></tr></table></figure></li><li><p>但是，main函数的argv[0]为什么要去存放可执行文件名，即然__libc_start_main函数都能找到main了，还需要知道main函数所在的可执行文件名吗？希望这个疑惑有一天可以明白。<strong>TODO</strong></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> C </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Computer Network - 网络层概述</title>
       <link href="/2022/11/07/%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"/>
       <url>/2022/11/07/%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</url>
