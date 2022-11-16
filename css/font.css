@@ -1,0 +1,15 @@
+@font-face{
+    font-family: 'Lora';
+    font-display: swap;
+    src: url('../font/Lora-Regular.ttf') format("truetype");
+}
+
+/* @font-face{
+    font-family: 'Amiri';
+    font-display: swap;
+    src: url('../font/Amiri-Regular.ttf') format("truetype");
+} */
+
+body {
+    font-family: "Microsoft YaHei", 'Lora', 'Amiri';
+}
