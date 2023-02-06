@@ -1,7 +1,7 @@
-@font-face{
+@font-face {
     font-family: 'Lora';
     font-display: swap;
-    src: url('../font/Lora-Regular.ttf') format("truetype");
+    src: url('../font/Times New Roman.ttf') format("truetype");
 }
 
 /* @font-face{
@@ -11,5 +11,5 @@
 } */
 
 body {
-    font-family: "Microsoft YaHei", 'Lora', 'Amiri';
+    font-family: "Microsoft YaHei", 'Lora', 'Amiri', 'Times New Roman', 'MiSans-Regular';
 }
