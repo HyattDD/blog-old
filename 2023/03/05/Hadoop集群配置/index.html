@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Hadoop cluster configuration | HyattDD Blog</title><meta name="author" content="Hyatt.D"><meta name="copyright" content="Hyatt.D"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Simple Introduction of Hadoop cluster configuration"><link rel="shortcut icon" href="/img/webpic.png"><link rel="canonical" href="http://example.com/2023/03/05/Hadoop%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":999,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hadoop cluster configuration',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-06 20:12:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="HyattDD Blog"><span class="site-name">HyattDD Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Hadoop cluster configuration</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-05T12:00:00.000Z" title="Created 2023-03-05 20:00:00">2023-03-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-03-06T12:12:00.350Z" title="Updated 2023-03-06 20:12:00">2023-03-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/">Tools</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Hadoop cluster configuration"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1>Docker 使用</h1>
+<p>首先要说明的是，本方案基于 Docker 部署 Hadoop 集群，所以使用了很多 Docker 使用经验，这里一并总结。</p>
+<p>启动 Docker 的两种方式：</p>
+<ol>
+<li>使用 Docker Desktop</li>
+<li>使用指令 <code>systemctl start docker</code> 启动，或者配置开机启动 <code>systemctl enable docker</code></li>
+</ol>
+<h2 id="镜像与容器管理">镜像与容器管理</h2>
+<p>使用时配合 docker desktop 会更高效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 搜索镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker search &lt;imageName&gt;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 从中央仓库拉取镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker pull &lt;imageName&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker pull ubuntu:20.04  //拉取一个镜像</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker rmi &lt;imageID&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker image rm &lt;imageName&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker image rm ubuntu:20.04 或 docker rmi ubuntu:20.04</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除所有镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker rmi `docker images -q`</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 拉取自己的镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker pull repoName/imageName:tag</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上传自己的镜像，在login之后</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker pull repoName/imageName:tag</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 工作后保存自己的镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker commit -m=<span class="string">&quot;提交的描述信息&quot;</span> -a=<span class="string">&quot;作者&quot;</span> 容器id 目标镜像名:[TAG]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker commit containerID targetImageName:tag</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 列出本地所有镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker images</span>  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 将镜像ubuntu:20.04导出到本地文件ubuntu_20_04.tar中，方便迁移</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker save -o ubuntu_20_04.tar ubuntu:20.04</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改权限，方便迁移后读取</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chmod +r ubuntu_20_04.tar</span>  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 将镜像ubuntu:20.04从本地文件ubuntu_20_04.tar中加载</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker load -i ubuntu_20_04.tar</span>  </span><br></pre></td></tr></table></figure>
+<p>以本次实验中涉及到的运行指令为例：</p>
+<p>在构建原始 docker 镜像（用于生成一个 master 和两个 slave 节点）时，使用：</p>
+<p><code>docker run -it -v /home/hadoop/build:/root/build --name ubuntu ubuntu</code></p>
+<p>其中：</p>
+<ul>
+<li><code>run</code> 指令表示运行一个镜像，得到一个 container</li>
+<li><code>-i</code> 表示开启交互式， <code>-t</code> 表示分配一个tty</li>
+<li><code>-v</code> 指令表示将该容器内部的/root/build 文件夹与运行 docker 的本地文件夹/home/hadoop/build 共享，这样比较方便文件的传输</li>
+<li><code>--name ubuntu</code> 指令是给启动的容器命名为ubuntu</li>
+<li><code>ubuntu</code> 表示启动容器所使用的镜像名称</li>
+</ul>
+<div class="note info no-icon simple"><p><strong>tty</strong></p>
+<p>tty 控制台是一个文本终端，它可以让用户与操作系统进行交互。tty 是一个缩写，代表 “teletype”（电传打字机），因为在早期的计算机时代，用户使用电传打字机与计算机进行交互。现在，tty 控制台通常是通过终端仿真器（如 GNOME 终端或 Konsole）提供的虚拟终端来模拟的。tty 控制台是 Linux 系统的一部分，它允许用户在没有图形界面的情况下使用命令行界面来执行任务。</p>
+</div>
+<h1>配置单机 Hadoop</h1>
+<p>首先考虑配置单机版 Hadoop，需要先制作镜像，于是拉取 Ubuntu：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull ubuntu</span></span><br></pre></td></tr></table></figure>
+<p>在本地建立文件夹，运行时挂载，以方便文件传输</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -it -v /home/hadoop/build:/root/build --name ubuntu ubuntu</span></span><br></pre></td></tr></table></figure>
+<p>进入到虚拟机后下载一些工具，如 vim、sshd：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> apt-get update</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> apt-get install vim</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> apt-get install ssh</span></span><br></pre></td></tr></table></figure>
+<p>开启 sshd 服务器, 也可以将该命令写入 <code>.bashrc</code> 配置文件以免每次都要手动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /etc/init.d/ssh start</span></span><br></pre></td></tr></table></figure>
+<p>安装好 sshd 之后，配置 ssh 无密码连接本地 sshd 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa <span class="comment">#一直按回车键即可</span></span> </span><br><span class="line"><span class="meta">$</span><span class="bash"> cat id_dsa.pub &gt;&gt; authorized_keys</span></span><br></pre></td></tr></table></figure>
+<p>Hadoop 需要 Java，所以安装 Java</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> apt-get install default-jdk</span></span><br></pre></td></tr></table></figure>
+<p>再根据 Java 版本设置 <code>.bashrc</code> 文件中的环境变量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/</span> </span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span></span><br></pre></td></tr></table></figure>
+<p>修改后注意 source 一下，再来安装 Hadoop</p>
+<p>上面的容器目前保持开启。然后在宿主机把下载下来的 Hadoop 安装文件放到共享目录 /home/hadoop/build 下面，然后在 Docker 内部 Ubuntu 系统的/root/build 目录即可获取到 Hadoop 安装文件，在 docker 容器中安装 hadoop 的方式和在宿主机本地安装一样：下载 Hadoop 的二进制文件并进行配置。具体步骤如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /root/build</span>  </span><br><span class="line"><span class="meta">$</span><span class="bash"> tar -zxvf hadoop-3.1.4.tar.gz -C /usr/<span class="built_in">local</span></span> </span><br><span class="line"><span class="meta">$</span><span class="bash"> mv /usr/<span class="built_in">local</span>/hadoop-3.1.4 /usr/<span class="built_in">local</span>/hadoop</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/hadoop </span><br><span class="line">./bin/hadoop version</span><br></pre></td></tr></table></figure>
+<h1>配置 hadoop 集群</h1>
+<p>先配置Java，在 hadoop 安装目录，假设为/usr/local/hadoop 目录，修改 JavaHome</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vim etc/hadoop/hadoop-env.sh</span>  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 <span class="built_in">export</span> JAVA_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>替换成</span>  </span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/</span></span><br></pre></td></tr></table></figure>
+<p>Hadoop 配置时的 xml 文件中配置信息是指 Hadoop 集群中各个组件的配置参数，例如 NameNode、DataNode、ResourceManager、NodeManager 等。这些配置信息包括了 Hadoop 集群的基本信息和各个组件的详细配置，如端口号、文件系统路径、内存大小等。在 Hadoop 中，这些参数都是通过 XML 格式的配置文件进行定义和管理，通常包括 <code>core-site.xml</code>、<code>hdfs-site.xml</code>、<code>yarn-site.xml</code> 等。通过修改这些 XML 文件中的配置信息，可以对 Hadoop 集群进行灵活的调整和优化。</p>
+<p><strong>core-site.xml</strong></p>
+<p>这个文件包含了 Hadoop 的核心配置信息，如文件系统的默认块大小、Hadoop 集群名称节点的地址等。在配置 core-site.xml 文件时，需要设置以下属性：</p>
+<ul>
+<li><code>fs.defaultFS</code>：指定默认的文件系统 URL</li>
+<li><code>hadoop.tmp.dir</code>：指定 Hadoop 的临时目录</li>
+<li><code>io.file.buffer.size</code>：指定文件 I/O 缓冲区大小</li>
+<li><code>hadoop.proxyuser.&lt;user&gt;.hosts</code> 和 <code>hadoop. proxyuser.&lt;user&gt;.groups</code>：指定代理用户和他们所属的组</li>
+</ul>
+<p><strong>hdfs-site.xml</strong></p>
+<p>这个文件包含了 HDFS 的配置信息，如块大小、副本数等。在配置 hdfs-site.xml 文件时，需要设置以下属性：</p>
+<ul>
+<li><code>dfs.namenode.name.dir</code>：指定 NameNode 存储元数据的目录。</li>
+<li><code>dfs.datanode.data.dir</code>：指定 DataNode 存储块数据的目录。</li>
+<li><code>dfs.replication</code>：指定每个数据块应该有多少个副本。</li>
+<li><code>dfs.blocksize</code>：指定每个数据块的大小。</li>
+</ul>
+<p><strong>yarn-site.xml</strong></p>
+<p>这个文件包含了 YARN 的配置信息，如 NodeManager 和 ResourceManager 的地址、内存和 CPU 资源管理等。在配置 yarn-site.xml 文件时，需要设置以下属性：</p>
+<ul>
+<li><code>yarn.nodemanager.resource.memory-mb</code> 和 <code>yarn. scheduler. minimum-allocation-mb</code>：指定每个 NodeManager 可用的内存量和最小分配量。</li>
+<li><code>yarn.nodemanager.resource.cpu-vcores</code> 和 <code>yarn.scheduler.minimum-allocation-vcores</code>：指定每个 NodeManager 可用的 CPU 数量和最小分配数量。</li>
+<li><code>yarn.resourcemanager.hostname</code> 和 <code>yarn.resourcemanager.address</code>：指定 ResourceManager 所在节点的主机名和地址。</li>
+</ul>
+<p>接着打开 <code>core-site.xml</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;file:/usr/local/hadoop/tmp&lt;/value&gt;</span><br><span class="line">		&lt;description&gt;Abase <span class="keyword">for</span> other temporary directories.&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;hdfs:<span class="comment">//master:9000&lt;/value&gt;</span></span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>再配置 <code>hdfs-site.xml</code>，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">       &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">       &lt;value&gt;file:/usr/local/hadoop/namenode_dir&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property&gt;</span><br><span class="line">       &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">       &lt;value&gt;file:/usr/local/hadoop/datanode_dir&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">       &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">       &lt;value&gt;<span class="number">3</span>&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>再配置 <code>mapred-site.xml</code>，tips: 可以复制 <code>mapred-site.xml.template</code> 再改名得到文件，再修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">	    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>再修改 yarn-site. xml 文件，输入以下内容:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;  </span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;</span><br><span class="line">     &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line">     </span><br><span class="line">     &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;master&lt;/value&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line"> &lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>至此镜像配置完成，保存成镜像以供后续使用即可，当我们后续利用此镜像生成容器时，需要配置主节点和从节点之间的免密登录，在开启的容器中/etc/hosts 文件中配置即可，在一个节点配置好后使用 scp 将 hosts 文件传递过去是一种比较快捷的方式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">172.18.0.2</span><br><span class="line">172.18.0.3</span><br><span class="line">172.18.0.4</span><br><span class="line"></span><br><span class="line">master</span><br><span class="line">slave01</span><br><span class="line">slave02</span><br></pre></td></tr></table></figure>
+<p>然后在 master 节点上修改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vim /usr/<span class="built_in">local</span>/Hadoop/etc/hadoop/workers 2.</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 slaves 文件已经被替换为 workers</span>  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 localhost 替换成两个 slave 的主机名</span>  </span><br><span class="line">slave01</span><br><span class="line">slave02</span><br><span class="line">master</span><br></pre></td></tr></table></figure>
+<p>配置好以上内容后，格式化节点并启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/hadoop</span>  </span><br><span class="line"><span class="meta">$</span><span class="bash"> bin/hdfs namenode -format 3. sbin/start-all.sh</span></span><br></pre></td></tr></table></figure>
+<p>之后可以使用 <code>jps</code> 在 master 节点上查看运行情况也可以运行 <code>bin/hdfs dfsadmin -report</code></p>
+<h1>运行 WordCount 示例</h1>
+<p><strong>首先启动 hadoop</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/hadoop</span></span><br><span class="line"><span class="meta">#</span><span class="bash">格式化namenode,但不要每次都格式化,镜像已经保存了logs就别再初始化了</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> bin/hdfs namenode -format</span></span><br><span class="line"><span class="meta">#</span><span class="bash">单节点运行用dfs</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./sbin/start-dfs.sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash">多节点集群运行要把yarn也开了，直接用start-all即可</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./sbin/start-all.sh</span></span><br></pre></td></tr></table></figure>
+<p><strong>将输入文件传到 hdfs 系统</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">新建input文件夹</span></span><br><span class="line">bin/hdfs dfs -mkdir /input</span><br><span class="line"><span class="meta">#</span><span class="bash">将本地的input文件夹下内容传到hdfs系统的input文件夹中</span></span><br><span class="line">bin/hdfs dfs -put input/* /input</span><br></pre></td></tr></table></figure>
+<p>将待统计分词的文件放在 input 文件夹中即可，比如为 <code>hello.txt</code></p>
+<p><strong>查看文件上传是否成功</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bin/hdfs dfs -ls /input</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> bin/hdfs dfs -cat /input/hello.txt</span></span><br></pre></td></tr></table></figure>
+<p><strong>运行 WordCount 并查看内容</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar wordcount /input/hello.txt /output</span><br><span class="line">bin/hdfs dfs -cat /output/*</span><br></pre></td></tr></table></figure>
+<h1>运行 grep 示例</h1>
+<p>仍然先保证 hdfs 上建好 input 目录，然后将本地的一些文件传到其中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bin/hdfs dfs -put etc/hadoop/*.xml /input</span></span><br></pre></td></tr></table></figure>
+<p>通过 ls 命令查看下是否正确将文件上传到 hdfs 下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bin/hdfs dfs -ls /input</span></span><br></pre></td></tr></table></figure>
+<p>运行 grep 示例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar grep /input output <span class="string">&#x27;dfs[a-z.]+&#x27;</span></span></span><br></pre></td></tr></table></figure>
+<p>运行完毕之后在 hdfs 上的 output 目录下查看到运行结果:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bin/hdfs dfs -cat output/*</span></span><br><span class="line"></span><br><span class="line">dfsadmin</span><br><span class="line">dfs.replication</span><br><span class="line">dfs.namenode.name.dir</span><br><span class="line">dfs.datanode.data.dir</span><br></pre></td></tr></table></figure>
+<h1>Debug</h1>
+<h2 id="运行后slave-节点中-datanode-缺失">运行后slave 节点中 datanode 缺失</h2>
+<p>这种情况一般是多次使用 <code>bin/hdfs dfsadmin -report</code> 格式化 namenode，datanode ，使得其中保存的 current/VERSION 文件中的 <code>clustreID</code> 的值是上一次格式化保存的 <code>clusterID</code>，使得 datanode 和 namenode 之间的 ID 不一致，所以可以选择将 datanode 存放数据的current文件夹删除，比如我们之前在 <code>hdfs-site.xml</code> 文件中配置的存储路径为 <code>/usr/local/hadoop/namenode_dir</code></p>
+<h2 id="运行-WordCount-示例出现配置项缺失">运行 WordCount 示例出现配置项缺失</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Error: Could not find or load main class org.apache.hadoop.mapreduce.v2.app.MRAppMaster</span><br><span class="line"></span><br><span class="line">Please check whether your etc/hadoop/mapred-site.xml contains the below configuration:</span><br></pre></td></tr></table></figure>
+<p>按照提示配置 <code>mapred-site.xml</code> 文件即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/usr/local/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/usr/local/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/usr/local/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hadoop/">Hadoop</a></div><div class="post_share"><div class="social-share" data-image="/./img/touxiang.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Hyatt.D</div><div class="author-info__description">Seek truth from the facts.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HyattDD"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/HyattDD" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:tjudht@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Docker 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E4%B8%8E%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">镜像与容器管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">配置单机 Hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">配置 hadoop 集群</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">运行 WordCount 示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">运行 grep 示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">Debug</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%90%8Eslave-%E8%8A%82%E7%82%B9%E4%B8%AD-datanode-%E7%BC%BA%E5%A4%B1"><span class="toc-number">6.1.</span> <span class="toc-text">运行后slave 节点中 datanode 缺失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C-WordCount-%E7%A4%BA%E4%BE%8B%E5%87%BA%E7%8E%B0%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%BC%BA%E5%A4%B1"><span class="toc-number">6.2.</span> <span class="toc-text">运行 WordCount 示例出现配置项缺失</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/05/Hadoop%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/" title="Hadoop cluster configuration">Hadoop cluster configuration</a><time datetime="2023-03-05T12:00:00.000Z" title="Created 2023-03-05 20:00:00">2023-03-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/02/22/Gradle%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="Gradle Tutorial by chat-GPT">Gradle Tutorial by chat-GPT</a><time datetime="2023-02-22T12:00:00.000Z" title="Created 2023-02-22 20:00:00">2023-02-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/02/15/Computational%20Graph/" title="Computational Graph - Theory and Implementation">Computational Graph - Theory and Implementation</a><time datetime="2023-02-15T12:20:00.000Z" title="Created 2023-02-15 20:20:00">2023-02-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/02/03/Distributed%20Machine%20Learning%2002/" title="Distributed Machine Learning 02">Distributed Machine Learning 02</a><time datetime="2023-02-03T15:14:59.000Z" title="Created 2023-02-03 23:14:59">2023-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/01/28/Deep%20Neural%20Network%20Foundation/" title="Deep Neural Network Foundation">Deep Neural Network Foundation</a><time datetime="2023-01-28T12:20:00.000Z" title="Created 2023-01-28 20:20:00">2023-01-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Hyatt.D</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
